@@ -8,11 +8,13 @@ middle_name:
 last_name: Sharma
 email: yash.ssharma@outlook.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Backend & Web3 engineer specializing in real-time systems, DeFi analytics, FastAPI microservices, and distributed pipelines.
+meta_title: Yash Sharma — Backend & Web3 Engineer
+meta_description: Backend & Web3 engineer specializing in real-time systems, DeFi analytics, FastAPI microservices, and distributed pipelines.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
+keywords: backend engineer, web3, fastapi, defi analytics, real-time systems  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
