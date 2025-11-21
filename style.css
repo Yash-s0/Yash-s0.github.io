@@ -30,6 +30,14 @@ html,
 body {
   min-height: 100%;
   scroll-behavior: smooth;
+  /* Hide scrollbar but keep scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 body {
@@ -310,26 +318,13 @@ body.intro-locked {
   max-height: calc(100vh - 180px);
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  /* Hide scrollbar but keep scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .page::-webkit-scrollbar {
-  width: 8px;
-}
-
-.page::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-  border-radius: 10px;
-}
-
-.page::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 10px;
-}
-
-.page::-webkit-scrollbar-corner {
-  background: transparent;
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .home .page {
@@ -374,6 +369,13 @@ body.intro-locked {
   align-items: center;
   overflow-y: auto;
   max-height: calc(100vh - 180px);
+  /* Hide scrollbar but keep scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hero::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .hero-left {
