@@ -159,12 +159,30 @@
     location.href = hashOrPath;
   }
 
+  const nav = document.querySelector(".nav");
+  const navToggle = document.querySelector(".nav-toggle");
+
+  if (navToggle && nav) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("is-open");
+      navToggle.classList.toggle("is-open", isOpen);
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+
   // attach nav events
   document.querySelectorAll(".nav a").forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
       const href = a.getAttribute("href");
       navigateTo(href);
+      if (nav && nav.classList.contains("is-open")) {
+        nav.classList.remove("is-open");
+        if (navToggle) {
+          navToggle.classList.remove("is-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        }
+      }
     });
   });
 
@@ -224,7 +242,7 @@
   const modalBackdrop = document.createElement("div");
   modalBackdrop.className = "modal-backdrop";
   modalBackdrop.innerHTML = `<div class="modal highlight-modal" role="dialog" aria-modal="true">
-    <button id="highlight-close" class="modal-close" aria-label="Close project dialog">✕</button>
+    <button id="modal-close" class="modal-close" aria-label="Close project dialog">✕</button>
     <div class="modal-head">
       <strong id="modal-title">Project</strong>
       <p id="modal-summary" class="modal-summary muted"></p>
@@ -381,7 +399,10 @@ document.addEventListener("click", (e) => {
 
   /* ----- small accessibility: escape closes modal ----- */
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") modalBackdrop.classList.remove("open");
+    if (e.key === "Escape") {
+      modalBackdrop.classList.remove("open");
+      highlightBackdrop.classList.remove("open");
+    }
   });
 
   initIntroOverlay();

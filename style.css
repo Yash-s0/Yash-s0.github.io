@@ -201,6 +201,53 @@ body.intro-locked {
   justify-content: flex-end;
 }
 
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--neon-cyan);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  position: relative;
+}
+
+.nav-toggle span,
+.nav-toggle::before,
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle::before {
+  transform: translateY(-6px);
+}
+
+.nav-toggle::after {
+  transform: translateY(6px);
+}
+
+.nav-toggle.is-open::before {
+  transform: rotate(45deg);
+}
+
+.nav-toggle.is-open::after {
+  transform: rotate(-45deg);
+}
+
+.nav-toggle.is-open span {
+  opacity: 0;
+}
+
 .nav a {
   position: relative;
   padding: 8px 10px;
@@ -1068,9 +1115,28 @@ button:focus {
     align-items: flex-start;
   }
 
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
   .nav {
     width: 100%;
     justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-top: 0;
+    gap: 6px;
+    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
+  }
+
+  .nav.is-open {
+    max-height: 280px;
+    opacity: 1;
+    padding-top: 10px;
   }
 
   .hero .title {
