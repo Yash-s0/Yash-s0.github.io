@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>About — Yash Sharma</title>
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" role="navigation">
+    <a href="index.html" class="brand">Yash <span class="accent">Sharma</span></a>
+    <!-- <div class="brand">Yash <span class="accent">Sharma</span></div> -->
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html" class="active">About</a>
+      <a href="experience.html">Experience</a>
+      <a href="contact.html">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container page-scroll">
+
+    <!-- ----------- HERO ----------- -->
+    <article class="page hero">
+
+      <div class="hero-left">
+        <div class="title">About</div>
+
+        <div class="subtitle muted">
+          Backend & Web3 engineer focused on correctness, telemetry and low latency.
+        </div>
+
+        <div style="margin-top:12px;">
+          <p>
+            I design and operate production-grade event pipelines and APIs.  
+            My work covers data modeling, partitioning, monitoring and observability —  
+            I prioritize predictable performance, clean abstractions, and  
+            high-signal telemetry pipelines.
+          </p>
+
+          <div class="cta" style="margin-top:14px;">
+            <a class="btn" href="projects.html">View Projects</a>
+            <a class="btn btn-alt" href="cv.html">Download CV</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-tilt">
+          <img src="img/yash.jpg" alt="Yash Sharma" class="profile-img" />
+        </div>
+      </div>
+
+    </article>
+
+    <!-- ----------- SKILLS ----------- -->
+    <article class="page">
+      <div class="h2">
+        <div class="dot"></div>
+        <h2>Skills & Tools</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-chip"><i class="si si-python"></i><span>Python</span></div>
+        <div class="skill-chip"><i class="si si-flask"></i><span>Flask</span></div>
+        <div class="skill-chip"><i class="si si-fastapi"></i><span>FastAPI</span></div>
+        <div class="skill-chip"><i class="si si-apachekafka"></i><span>Kafka</span></div>
+        <div class="skill-chip"><i class="si si-postgresql"></i><span>PostgreSQL</span></div>
+        <div class="skill-chip"><i class="si si-redis"></i><span>Redis</span></div>
+        <div class="skill-chip"><i class="si si-mongodb"></i><span>MongoDB</span></div>
+        <div class="skill-chip"><i class="si si-quest"></i><span>QuestDB</span></div>
+        <div class="skill-chip"><i class="si si-elasticsearch"></i><span>ElasticSearch</span></div>
+        <div class="skill-chip"><i class="si si-docker"></i><span>Docker</span></div>
+        <div class="skill-chip"><i class="si si-linux"></i><span>Linux</span></div>
+        <div class="skill-chip"><i class="si si-git"></i><span>Git</span></div>
+        <div class="skill-chip"><i class="si si-javascript"></i><span>JavaScript</span></div>
+        <div class="skill-chip"><i class="si si-html5"></i><span>HTML</span></div>
+        <div class="skill-chip"><i class="si si-css3"></i><span>CSS</span></div>
+        <div class="skill-chip"><i class="si si-ethereum"></i><span>Ethereum</span></div>
+        <div class="skill-chip"><i class="si si-binance"></i><span>BSC</span></div>
+        <div class="skill-chip"><i class="si si-github"></i><span>GitHub</span></div>
+
+      </div>
+    </article>
+
+    <!-- ----------- HIGHLIGHTS ----------- -->
+    <article class="page">
+      <div class="h2">
+        <div class="dot"></div>
+        <h2>Highlights</h2>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="card highlight-card" data-highlight-id="systems">
+          <h3>Systems Design</h3>
+          <p class="muted">
+            Designing partitioned, replayable event consumers,  
+            correct compute flows, and low-latency APIs.
+          </p>
+        </div>
+
+        <div class="card highlight-card" data-highlight-id="observability">
+          <h3>Observability</h3>
+          <p class="muted">
+            Prometheus/Grafana instrumentation,  
+            p95 latency tuning and runbook-driven ops.
+          </p>
+        </div>
+
+        <div class="card highlight-card" data-highlight-id="onchain">
+          <h3>On-chain</h3>
+          <p class="muted">
+            Decoder logic for Uniswap V4 logs,  
+            multi-chain listeners & node RPC handling.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    © 2025 Yash Sharma — About
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

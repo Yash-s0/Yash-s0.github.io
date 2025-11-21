@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Experience — Yash Sharma</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="header" role="navigation">
+    <a href="index.html" class="brand">Yash <span class="accent">Sharma</span></a>
+    <!-- <div class="brand">Yash <span class="accent">Sharma</span></div> -->
+    <nav class="nav"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="experience.html">Experience</a><a href="contact.html">Contact</a><a href="cv.html">CV</a></nav>
+  </header>
+
+  <main class="container">
+    <article class="page">
+      <div class="h2"><div class="dot"></div><h2>Experience</h2></div>
+      <div class="subtitle muted">Roles, responsibilities & measurable outcomes.</div>
+
+      <div style="margin-top:14px;">
+
+      <!-- Role 1 -->
+      <div class="exp-card">
+        <h3>Software Engineer I — Stackera (Client Projects)</h3>
+        <p class="muted"><strong>Jul 2023 — Present</strong></p>
+
+        <div class="exp-section-title">Crypto Betting Platform (Nov 2025 — Present)</div>
+        <ul class="exp-list">
+          <li>Architecting backend services for real-time betting games (Dice, Plinko).</li>
+          <li>Designing FastAPI microservices and PostgreSQL schemas for users, bets, sessions & provably-fair mechanics.</li>
+          <li>Implementing session handling, nonce/seed flows and scalable game execution logic.</li>
+          <li>Building transaction-safe bet workflows and high-throughput payout engines.</li>
+        </ul>
+
+        <div class="exp-section-title">DexCheck.io (Jul 2023 — Oct 2025)</div>
+        <ul class="exp-list">
+          <li>Scaled multi-chain listeners (ETH, BSC, Base) using Web3.py, cutting latency by <strong>50%</strong>.</li>
+          <li>Designed API endpoints with Redis & Prometheus delivering <strong>~120ms P95</strong> latencies.</li>
+          <li>Built Kafka-based ETL pipelines backed by partitioned PostgreSQL & RPC integrations.</li>
+        </ul>
+
+        <div class="exp-tags">
+          <span class="tag">Web3</span><span class="tag">Flask</span><span class="tag">FastAPI</span>
+          <span class="tag">ElasticSearch</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span>
+          <span class="tag">QuestDB</span><span class="tag">Kafka</span><span class="tag">Web3.py</span>
+          <span class="tag">Prometheus</span><span class="tag">Websocket</span><span class="tag">Redis</span>
+          <span class="tag">Linux (Fedora/Ubuntu)</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <h3>Software Development Intern — Stackera</h3>
+        <p class="muted"><strong>Apr 2023 — Jun 2023</strong></p>
+
+        <ul class="exp-list">
+          <li>Developed Python/Flask apps improving prototype processing time by <strong>20%</strong>.</li>
+          <li>Built early backend features powering DeFi-related workflows.</li>
+        </ul>
+
+        <div class="exp-tags">
+          <span class="tag">Python</span><span class="tag">Flask</span>
+          <span class="tag">PostgreSQL</span><span class="tag">JWT</span>
+          <span class="tag">HTML/CSS</span><span class="tag">macOS</span>
+        </div>
+      </div>
+
+    </div>
+    </article>
+  </main>
+
+  <footer class="footer">© 2025 Yash Sharma — Experience</footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cyan Circle -->
+  <circle cx="12" cy="12" r="11" fill="#00eaff" fill-opacity="0.85"/>
+
+  <!-- Black Lightning -->
+  <path d="M13 3L6 14h5l-1 7 7-11h-5l1-7z" fill="#000000"/>
+</svg>
