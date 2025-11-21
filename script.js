@@ -186,7 +186,19 @@
     });
   });
 
-
+  /* ----- Page enter animations (apply on load) ----- */
+  function pageEnter() {
+    // find main .page and run enter animation
+    const page = document.querySelector(".page");
+    if (!page) return;
+    page.classList.add("enter-from-right");
+    requestAnimationFrame(() => {
+      page.classList.add("enter-in");
+      page.style.opacity = 1;
+    });
+    // clear after a bit
+    setTimeout(() => page.classList.remove("enter-from-right"), 700);
+  }
   document.addEventListener("DOMContentLoaded", pageEnter);
 
   /* ----- Typewriter for hero title (if present) ----- */
@@ -393,6 +405,8 @@ document.addEventListener("click", (e) => {
     }
   });
 
+  initIntroOverlay();
+
   /* ----- Profile tilt interaction (home page only) ----- */
   function initProfileTilt() {
     const tiltContainer = document.querySelector(".profile-tilt");
@@ -467,6 +481,38 @@ document.addEventListener("click", (e) => {
   initProfileTilt();
   initProjectSliders();
   initCopyChips();
+
+  function initIntroOverlay() {
+    const body = document.body;
+    if (!body) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "intro-overlay";
+    overlay.setAttribute("role", "status");
+    overlay.setAttribute("aria-live", "polite");
+    overlay.innerHTML = `
+      <div class="intro-spinner" aria-hidden="true"></div>
+      <div class="intro-progress" aria-hidden="true"></div>
+      <div class="intro-text">Booting neon systems...</div>
+    `;
+
+    body.appendChild(overlay);
+    body.classList.add("intro-locked");
+
+    requestAnimationFrame(() => overlay.classList.add("is-active"));
+
+    const displayDuration = 1100;
+
+    setTimeout(() => {
+      overlay.classList.add("is-fading");
+    }, displayDuration);
+
+    setTimeout(() => {
+      overlay.remove();
+      body.classList.remove("intro-locked");
+    }, displayDuration + 600);
+  }
+
 
   function initCopyChips() {
     const buttons = document.querySelectorAll(".copy-chip");
