@@ -157,14 +157,15 @@ body.intro-locked {
 .header {
   position: fixed;
   top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(var(--max-width) + 40px);
-  padding: 10px 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: min(var(--max-width), calc(100% - 32px));
+  padding: 10px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -196,9 +197,11 @@ body.intro-locked {
 
 .nav {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 14px;
+  flex: 1 1 55%;
+  min-width: 260px;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-toggle {
@@ -839,9 +842,44 @@ body.intro-locked {
 
 .modal-actions {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.modal-actions .btn,
+.modal-actions .project-btn {
+  flex: 0 1 auto;
+  min-width: 180px;
+  min-height: 46px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.modal-actions .project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #e6fbff !important;
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.35);
+  box-shadow: inset 0 0 12px rgba(0, 240, 255, 0.12);
+}
+
+.modal-actions .project-btn i {
+  font-size: 16px;
+}
+
+.modal-actions .project-btn:hover {
+  box-shadow:
+    inset 0 0 14px rgba(0, 240, 255, 0.18),
+    0 8px 20px rgba(0, 240, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 640px) {
@@ -1079,9 +1117,7 @@ button:focus {
 /* -------------------------------------------------------------------------- */
 @media (max-width: 1200px) {
   .header {
-    width: calc(100% - 40px);
-    left: 20px;
-    transform: none;
+    width: calc(100% - 24px);
   }
 }
 
@@ -1111,8 +1147,15 @@ button:focus {
 
 @media (max-width: 720px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 9px 14px;
+    gap: 8px;
+  }
+
+  .brand {
+    flex: 0 0 auto;
   }
 
   .nav-toggle {
@@ -1121,22 +1164,33 @@ button:focus {
   }
 
   .nav {
-    width: 100%;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 12px;
+    right: 12px;
+    min-width: 0;
+    width: auto;
     justify-content: flex-start;
     flex-direction: column;
     align-items: flex-start;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    padding-top: 0;
-    gap: 6px;
-    transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.2s ease;
+    padding: 0;
+    gap: 10px;
+    pointer-events: none;
+    background: rgba(2, 8, 22, 0.92);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    transition: max-height 0.25s ease, opacity 0.22s ease, padding 0.18s ease;
   }
 
   .nav.is-open {
-    max-height: 280px;
+    max-height: 320px;
     opacity: 1;
-    padding-top: 10px;
+    padding: 14px 16px;
+    pointer-events: auto;
   }
 
   .hero .title {
