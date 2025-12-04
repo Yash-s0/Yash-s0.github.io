@@ -102,6 +102,50 @@
       internal: "projects/binance.html",
       repo: "https://github.com/Yash-s0/binance",
     },
+    deadcode: {
+      title: "PyDeadCode — Dead Code Detector",
+      summary:
+        "Python 3.8+ static analyzer that detects unused imports, functions, classes, variables, and unreachable code and wraps it in a polished, self-contained HTML report.",
+      features: [
+        "Project-wide scan using Python AST and a call graph",
+        "Finds unused imports, functions/classes, variables, and unreachable code",
+        "Computes an overall code health score",
+        "Generates a responsive, single-page HTML report with search and filters",
+      ],
+      skills: [
+        "Python",
+        "Static Analysis",
+        "AST",
+        "Jinja2",
+        "HTML/CSS",
+        "CLI Design",
+        "Open Source",
+      ],
+      internal: "projects/deadcode.html",
+      repo: "https://github.com/Yash-s0/py-deadcode-finder",
+    },
+    duplicate: {
+      title: "PyDuplicate — Duplicate & Complexity Analyzer",
+      summary:
+        "Open-source Python tool that surfaces duplicated code, complex functions, and even near-duplicate assets via a single interactive HTML dashboard.",
+      features: [
+        "Scans codebases for function- and file-level duplication",
+        "Uses cyclomatic complexity metrics to flag hotspots",
+        "Leverages MinHash + LSH for fuzzy duplicate detection",
+        "Outputs a responsive HTML report with collapsible sections and visual cues",
+      ],
+      skills: [
+        "Python",
+        "Static Analysis",
+        "Radon",
+        "Datasketch",
+        "HTML/CSS",
+        "Jinja2",
+        "Open Source",
+      ],
+      internal: "projects/duplicate.html",
+      repo: "https://github.com/Yash-s0/py-duplicate-finder",
+    },
     url: {
       title: "URL Shortener (API + UI)",
       summary:
