@@ -110,6 +110,19 @@
     </article>
   </main>
 
+  <!-- Image modal popup -->
+  <div id="image-modal" class="image-modal" aria-hidden="true">
+    <div class="image-modal__backdrop" data-action="close"></div>
+    <div class="image-modal__content" role="dialog" aria-modal="true">
+      <button class="image-modal__close" data-action="close" aria-label="Close">×</button>
+      <button class="image-modal__nav prev" data-action="prev" aria-label="Previous">‹</button>
+      <div class="image-modal__frame">
+        <img src="" alt="" class="image-modal__img">
+      </div>
+      <button class="image-modal__nav next" data-action="next" aria-label="Next">›</button>
+    </div>
+  </div>
+
   <footer class="footer">© 2025 Yash Sharma — RPS Game</footer>
   <script src="../script.js"></script>
 </body>

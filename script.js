@@ -479,12 +479,15 @@ document.addEventListener("click", (e) => {
   }
 
   /* ----- Project sliders (project detail pages) ----- */
+  const sliderState = {}; // store slider states globally for modal access
+  
   function initProjectSliders() {
-    document.querySelectorAll(".project-slider").forEach((slider) => {
+    document.querySelectorAll(".project-slider").forEach((slider, sliderIdx) => {
       const slides = Array.from(slider.querySelectorAll(".project-slide"));
       const prevBtn = slider.querySelector(".slider-prev");
       const nextBtn = slider.querySelector(".slider-next");
       let index = 0;
+      let timer = null;
 
       const showSlide = (i) =>
         slides.forEach((slide, idx) => slide.classList.toggle("active", idx === i));
@@ -511,18 +514,140 @@ document.addEventListener("click", (e) => {
           resetTimer();
         });
 
-      let timer = setInterval(next, 3000);
       const resetTimer = () => {
         clearInterval(timer);
         timer = setInterval(next, 3000);
       };
 
+      const startTimer = () => {
+        timer = setInterval(next, 3000);
+      };
+
+      const stopTimer = () => {
+        clearInterval(timer);
+      };
+
+      startTimer();
       showSlide(index);
+
+      // store slider state for modal access
+      sliderState[sliderIdx] = {
+        slider,
+        slides,
+        timer: null,
+        stopTimer,
+        startTimer,
+      };
+    });
+  }
+
+  /* ----- Image Modal (on-click popup for gallery images) ----- */
+  function initImageModal() {
+    const modal = document.getElementById("image-modal");
+    if (!modal) return; // modal not present on this page
+
+    const modalImg = modal.querySelector(".image-modal__img");
+    const closeButtons = modal.querySelectorAll("[data-action='close']");
+    const prevBtn = modal.querySelector("[data-action='prev']");
+    const nextBtn = modal.querySelector("[data-action='next']");
+
+    // collect all slider images from project-slider
+    const sliders = Array.from(document.querySelectorAll(".project-slider"));
+    const items = [];
+    const sliderMap = {}; // maps image index to slider index
+
+    sliders.forEach((slider, sliderIdx) => {
+      const slides = Array.from(slider.querySelectorAll(".project-slide"));
+      const startIdx = items.length;
+      slides.forEach((slide) => {
+        items.push(slide);
+        sliderMap[items.length - 1] = sliderIdx;
+      });
+    });
+
+    if (items.length === 0) return; // no images to show
+
+    let currentIndex = 0;
+    let currentSliderIdx = -1;
+
+    function showAt(index) {
+      currentIndex = (index + items.length) % items.length;
+      const src =
+        items[currentIndex].getAttribute("data-large") || items[currentIndex].src;
+      const alt = items[currentIndex].alt || "";
+      modalImg.src = src;
+      modalImg.alt = alt;
+    }
+
+    function stopSliderAutoplay() {
+      // stop all sliders when modal opens
+      Object.values(sliderState).forEach((state) => {
+        state.stopTimer();
+      });
+    }
+
+    function resumeSliderAutoplay() {
+      // resume all sliders when modal closes
+      Object.values(sliderState).forEach((state) => {
+        state.startTimer();
+      });
+    }
+
+    function openModal(index) {
+      stopSliderAutoplay();
+      showAt(index);
+      currentSliderIdx = sliderMap[index];
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      nextBtn.focus();
+    }
+
+    function closeModal() {
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      resumeSliderAutoplay();
+    }
+
+    // attach click on gallery items
+    items.forEach((img, i) => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => openModal(i));
+    });
+
+    // nav handlers
+    prevBtn.addEventListener("click", () => {
+      showAt(currentIndex - 1);
+    });
+    nextBtn.addEventListener("click", () => {
+      showAt(currentIndex + 1);
+    });
+
+    // close handlers
+    closeButtons.forEach((btn) => btn.addEventListener("click", closeModal));
+    modal.querySelector(".image-modal__backdrop").addEventListener("click", closeModal);
+
+    // keyboard support
+    document.addEventListener("keydown", (e) => {
+      if (modal.getAttribute("aria-hidden") === "false") {
+        if (e.key === "ArrowRight") {
+          showAt(currentIndex + 1);
+          e.preventDefault();
+        }
+        if (e.key === "ArrowLeft") {
+          showAt(currentIndex - 1);
+          e.preventDefault();
+        }
+        if (e.key === "Escape") {
+          closeModal();
+          e.preventDefault();
+        }
+      }
     });
   }
 
   initProfileTilt();
   initProjectSliders();
+  initImageModal();
   initCopyChips();
 
   function initCopyChips() {
