@@ -83,6 +83,36 @@
   --header-height: 70px;
 }
 
+/* === LIGHT MODE THEME VARIABLES === */
+:root:not(.dark) {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-elevated: #ffffff;
+  
+  /* Glassmorphism for light mode */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover-bg: rgba(0, 0, 0, 0.02);
+  
+  /* Text Colors for light mode */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  
+  /* UI Colors for light mode */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(0, 0, 0, 0.2);
+  --divider: rgba(0, 0, 0, 0.06);
+  
+  /* Shadows for light mode */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.12);
+}
+
 /* === LIGHT THEME === */
 [data-theme="light"] {
   --bg-primary: #ffffff;
