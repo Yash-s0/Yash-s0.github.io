@@ -1,162 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Yash Sharma</title>
   <meta name="description" content="Get in touch for backend, infrastructure, or Web3 opportunities">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'scale-in': 'scaleIn 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Smooth transitions for theme */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #00d9ff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0099ff; }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glass effect */
+    .glass {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  
   <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="experience.html" class="nav-link">Experience</a></li>
-          <li><a href="contact.html" class="nav-link active">Contact</a></li>
-          <li><a href="cv.html" class="nav-link">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+  <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="text-xl md:text-2xl font-bold hover:scale-105 transition-transform duration-200">
+          <span class="text-gray-900 dark:text-white">Yash</span>
+          <span class="gradient-text">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary/10 text-primary">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </div>
+        
+        <!-- Theme Toggle & Mobile Menu -->
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggle" class="p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110" aria-label="Toggle theme">
+            <svg id="sunIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="md:hidden hidden pb-4 space-y-2 animate-slide-up">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+        <a href="projects.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="about.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="experience.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+        <a href="contact.html" class="block px-4 py-3 rounded-lg text-sm font-medium bg-primary/10 text-primary">Contact</a>
+        <a href="cv.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+      </div>
+    </nav>
   </header>
 
   <!-- Contact Section -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Let's Connect</span>
-        <h1 class="section-title">Contact</h1>
-        <p class="section-description">
+  <section class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 md:mb-16 animate-fade-in">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-4">Let's Connect</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">Contact</h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Open to backend / infra / Web3 roles — available on weekdays for interviews. 
           Feel free to reach out through any of these platforms.
         </p>
       </div>
       
-      <div class="contact-grid">
+      <!-- Contact Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
         <!-- Email -->
-        <a class="contact-card" href="mailto:yash.ssharma@outlook.com">
-          <div class="contact-icon">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="contact-text">
-            <strong>Email</strong>
-            <p>yash.ssharma@outlook.com</p>
-            <button class="copy-chip" data-copy="yash.ssharma@outlook.com">Copy</button>
+        <a href="mailto:yash.ssharma@outlook.com" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 md:w-8 md:h-8 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Email</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3 break-words">yash.ssharma@outlook.com</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('yash.ssharma@outlook.com'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
 
         <!-- LinkedIn -->
-        <a class="contact-card" href="https://linkedin.com/in/yash-ssharma" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-linkedin"></i>
-          </div>
-          <div class="contact-text">
-            <strong>LinkedIn</strong>
-            <p>linkedin.com/in/yash-ssharma</p>
-            <button class="copy-chip" data-copy="yash-ssharma">Copy</button>
+        <a href="https://linkedin.com/in/yash-ssharma" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-linkedin text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">LinkedIn</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">linkedin.com/in/yash-ssharma</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('yash-ssharma'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
 
         <!-- GitHub -->
-        <a class="contact-card" href="https://github.com/Yash-s0" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-github"></i>
-          </div>
-          <div class="contact-text">
-            <strong>GitHub</strong>
-            <p>github.com/Yash-s0</p>
-            <button class="copy-chip" data-copy="Yash-s0">Copy</button>
+        <a href="https://github.com/Yash-s0" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-github text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">GitHub</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">github.com/Yash-s0</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('Yash-s0'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
 
         <!-- Discord -->
-        <a class="contact-card" href="https://discord.com/users/911662626432499722" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-discord"></i>
-          </div>
-          <div class="contact-text">
-            <strong>Discord</strong>
-            <p>yashsharma0116</p>
-            <button class="copy-chip" data-copy="yashsharma0116">Copy</button>
+        <a href="https://discord.com/users/911662626432499722" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-discord text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Discord</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">yashsharma0116</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('yashsharma0116'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
 
         <!-- StackOverflow -->
-        <a class="contact-card" href="https://stackoverflow.com/users/17952789/yash" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-stackoverflow"></i>
-          </div>
-          <div class="contact-text">
-            <strong>StackOverflow</strong>
-            <p>stackoverflow.com/users/17952789</p>
+        <a href="https://stackoverflow.com/users/17952789/yash" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-stackoverflow text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">StackOverflow</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">stackoverflow.com/users/17952789</p>
           </div>
         </a>
 
         <!-- Instagram -->
-        <a class="contact-card" href="https://instagram.com/iii_m_yash" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-instagram"></i>
-          </div>
-          <div class="contact-text">
-            <strong>Instagram</strong>
-            <p>@iii_m_yash</p>
-            <button class="copy-chip" data-copy="iii_m_yash">Copy</button>
+        <a href="https://instagram.com/iii_m_yash" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-instagram text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Instagram</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">@iii_m_yash</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('iii_m_yash'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
 
         <!-- Telegram -->
-        <a class="contact-card" href="https://t.me/Ya_Sh0" target="_blank">
-          <div class="contact-icon">
-            <i class="si si-telegram"></i>
-          </div>
-          <div class="contact-text">
-            <strong>Telegram</strong>
-            <p>@Ya_Sh0</p>
-            <button class="copy-chip" data-copy="@Ya_Sh0">Copy</button>
+        <a href="https://t.me/Ya_Sh0" target="_blank" class="group bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 group-hover:scale-150 transition-transform duration-300"></div>
+          <div class="relative">
+            <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <i class="si si-telegram text-3xl md:text-4xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Telegram</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-3">@Ya_Sh0</p>
+            <button class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium bg-primary/10 text-primary hover:bg-primary hover:text-gray-900 transition-colors" onclick="event.preventDefault(); event.stopPropagation(); navigator.clipboard.writeText('@Ya_Sh0'); this.innerText='Copied!'; setTimeout(() => this.innerText='Copy', 2000);">
+              Copy
+            </button>
           </div>
         </a>
       </div>
 
-      <!-- CV Link -->
-      <div class="card" style="margin-top: 3rem; max-width: 400px; margin-inline: auto;">
-        <a href="cv.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem;">
-          <div class="contact-icon" style="flex-shrink: 0;">
-            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <!-- CV Card -->
+      <div class="max-w-md mx-auto mt-12">
+        <a href="cv.html" class="group bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-primary/20 flex items-center gap-4">
+          <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-white dark:bg-gray-800 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
               <polyline points="14,2 14,8 20,8"></polyline>
               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -165,41 +267,57 @@
             </svg>
           </div>
           <div>
-            <strong style="display: block; margin-bottom: 0.25rem;">Download CV</strong>
-            <p style="font-size: 0.875rem; opacity: 0.7; margin: 0;">View full resume PDF</p>
+            <h3 class="text-xl font-bold mb-1 text-gray-900 dark:text-white">Download CV</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">View full resume PDF</p>
           </div>
         </a>
       </div>
 
-      <p style="text-align: center; margin-top: 3rem; opacity: 0.7;">
+      <p class="text-center mt-12 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
         Prefer email? Send a short note with role & availability — I reply quickly.
       </p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer">&copy; 2026 Yash Sharma</footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    // Toggle theme
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Initialize theme on page load
+    initTheme();
+  </script>
 </body>
 </html>

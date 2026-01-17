@@ -1,142 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Experience — Yash Sharma</title>
   <meta name="description" content="Professional experience in backend development, Web3, and blockchain technology">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'scale-in': 'scaleIn 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Smooth transitions for theme */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #00d9ff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0099ff; }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glass effect */
+    .glass {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  
   <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="experience.html" class="nav-link active">Experience</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="cv.html" class="nav-link">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+  <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="text-xl md:text-2xl font-bold hover:scale-105 transition-transform duration-200">
+          <span class="text-gray-900 dark:text-white">Yash</span>
+          <span class="gradient-text">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary/10 text-primary">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </div>
+        
+        <!-- Theme Toggle & Mobile Menu -->
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggle" class="p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110" aria-label="Toggle theme">
+            <svg id="sunIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="md:hidden hidden pb-4 space-y-2 animate-slide-up">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+        <a href="projects.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="about.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="experience.html" class="block px-4 py-3 rounded-lg text-sm font-medium bg-primary/10 text-primary">Experience</a>
+        <a href="contact.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <a href="cv.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+      </div>
+    </nav>
   </header>
 
   <!-- Experience Section -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Career Journey</span>
-        <h1 class="section-title">Experience</h1>
-        <p class="section-description">
+  <section class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 md:mb-16 animate-fade-in">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-4">Career Journey</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">Experience</h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
           Roles, responsibilities & measurable outcomes. My professional journey in backend development, 
           Web3 technologies, and scalable system architecture.
         </p>
       </div>
       
-      <div class="timeline">
-        <!-- Role 1 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Software Engineer I</h3>
-              <span class="timeline-date">Jul 2023 — Present</span>
-            </div>
-            <p class="timeline-company">Stackera (Client Projects)</p>
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Timeline line (hidden on mobile) -->
+        <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-primary/50"></div>
+        
+        <!-- Experience Items -->
+        <div class="space-y-8 md:space-y-12">
+          <!-- Role 1 -->
+          <div class="relative pl-0 md:pl-20">
+            <!-- Timeline dot -->
+            <div class="hidden md:block absolute left-6 top-6 w-5 h-5 rounded-full bg-primary ring-4 ring-white dark:ring-gray-900 shadow-lg"></div>
             
-            <div class="timeline-project">
-              <h4>Crypto Betting Platform</h4>
-              <span class="timeline-period">Nov 2025 — Present</span>
-              <ul>
-                <li>Architecting backend services for real-time betting games (Dice, Plinko).</li>
-                <li>Designing FastAPI microservices and PostgreSQL schemas for users, bets, sessions & provably-fair mechanics.</li>
-                <li>Implementing session handling, nonce/seed flows and scalable game execution logic.</li>
-                <li>Building transaction-safe bet workflows and high-throughput payout engines.</li>
-              </ul>
-            </div>
-            
-            <div class="timeline-project">
-              <h4>DexCheck.io</h4>
-              <span class="timeline-period">Jul 2023 — Oct 2025</span>
-              <ul>
-                <li>Scaled multi-chain listeners (ETH, BSC, Base) using Web3.py, cutting latency by <strong>50%</strong>.</li>
-                <li>Designed API endpoints with Redis & Prometheus delivering <strong>~120ms P95</strong> latencies.</li>
-                <li>Built Kafka-based ETL pipelines backed by partitioned PostgreSQL & RPC integrations.</li>
-              </ul>
-            </div>
-            
-            <div class="project-tags" style="margin-top: 1rem;">
-              <span class="tag">Web3</span>
-              <span class="tag">Flask</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">Elasticsearch</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">QuestDB</span>
-              <span class="tag">Apache Kafka</span>
-              <span class="tag">Timescale DB</span>
-              <span class="tag">Prometheus.io</span>
-              <span class="tag">WebSocket</span>
-              <span class="tag">Redis</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Ubuntu</span>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Software Engineer I</h3>
+                  <p class="text-primary font-medium mt-1">Stackera (Client Projects)</p>
+                </div>
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary whitespace-nowrap">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  Jul 2023 — Present
+                </span>
+              </div>
+              
+              <!-- Project 1 -->
+              <div class="mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-lg font-semibold text-gray-900 dark:text-white">Crypto Betting Platform</h4>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">Nov 2025 — Present</span>
+                </div>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Architecting backend services for real-time betting games (Dice, Plinko).</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Designing FastAPI microservices and PostgreSQL schemas for users, bets, sessions & provably-fair mechanics.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Implementing session handling, nonce/seed flows and scalable game execution logic.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Building transaction-safe bet workflows and high-throughput payout engines.</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- Project 2 -->
+              <div class="mb-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-lg font-semibold text-gray-900 dark:text-white">DexCheck.io</h4>
+                  <span class="text-sm text-gray-500 dark:text-gray-400">Jul 2023 — Oct 2025</span>
+                </div>
+                <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Scaled multi-chain listeners (ETH, BSC, Base) using Web3.py, cutting latency by <strong class="text-gray-900 dark:text-white">50%</strong>.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Designed API endpoints with Redis & Prometheus delivering <strong class="text-gray-900 dark:text-white">~120ms P95</strong> latencies.</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Built Kafka-based ETL pipelines backed by partitioned PostgreSQL & RPC integrations.</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- Tech Stack Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Web3</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Flask</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">FastAPI</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Elasticsearch</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">PostgreSQL</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">MongoDB</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">QuestDB</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Apache Kafka</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Timescale DB</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Prometheus.io</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">WebSocket</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Redis</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Linux</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Ubuntu</span>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Role 2 -->
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Software Development Intern</h3>
-              <span class="timeline-date">Apr 2023 — Jun 2023</span>
-            </div>
-            <p class="timeline-company">Stackera</p>
+          
+          <!-- Role 2 -->
+          <div class="relative pl-0 md:pl-20">
+            <!-- Timeline dot -->
+            <div class="hidden md:block absolute left-6 top-6 w-5 h-5 rounded-full bg-secondary ring-4 ring-white dark:ring-gray-900 shadow-lg"></div>
             
-            <ul style="margin-top: 1rem;">
-              <li>Developed Python/Flask apps improving prototype processing time by <strong>20%</strong>.</li>
-              <li>Built early backend features powering DeFi-related workflows.</li>
-            </ul>
-            
-            <div class="project-tags" style="margin-top: 1rem;">
-              <span class="tag">Python</span>
-              <span class="tag">Flask</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">JWT</span>
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS</span>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-gray-100 dark:border-gray-700">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Software Development Intern</h3>
+                  <p class="text-secondary font-medium mt-1">Stackera</p>
+                </div>
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary/10 text-secondary whitespace-nowrap">
+                  <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  Apr 2023 — Jun 2023
+                </span>
+              </div>
+              
+              <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-6">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Developed Python/Flask apps improving prototype processing time by <strong class="text-gray-900 dark:text-white">20%</strong>.</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Built early backend features powering DeFi-related workflows.</span>
+                </li>
+              </ul>
+              
+              <!-- Tech Stack Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">Python</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">Flask</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">PostgreSQL</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">JWT</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">HTML5</span>
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-secondary/10 text-secondary">CSS</span>
+              </div>
             </div>
           </div>
         </div>
@@ -145,28 +307,44 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer">&copy; 2026 Yash Sharma</footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    // Toggle theme
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Initialize theme on page load
+    initTheme();
+  </script>
 </body>
 </html>

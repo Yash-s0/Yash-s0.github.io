@@ -4,124 +4,199 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PyDeadCode — Dead Code Detector — Yash Sharma</title>
+  <meta name="description" content="Open-source Python static analyzer for finding unused code and unreachable segments">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'scale-in': 'scaleIn 0.6s ease-out forwards'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.9)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
   <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="../index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="../index.html" class="nav-link">Home</a></li>
-          <li><a href="../projects.html" class="nav-link active">Projects</a></li>
-          <li><a href="../about.html" class="nav-link">About</a></li>
-          <li><a href="../experience.html" class="nav-link">Experience</a></li>
-          <li><a href="../contact.html" class="nav-link">Contact</a></li>
-          <li><a href="../cv.html" class="nav-link">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center space-x-2 text-xl font-bold hover:opacity-80 transition-opacity">
+          <span>Yash</span>
+          <span class="text-primary">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="../projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
+          <a href="../about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="../experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="../contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="../cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </nav>
+        
+        <!-- Theme Toggle & Mobile Menu Button -->
+        <div class="flex items-center space-x-2">
+          <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+            <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col space-y-2">
+          <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="../projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
+          <a href="../about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="../experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="../contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="../cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <!-- Project Content -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container">
-
-      <div class="project-hero">
-        <div class="h2">
-          <div class="dot"></div>
-          <h2>PyDeadCode — Dead Code Detector</h2>
-        </div>
-        <p class="muted">
+  <section class="pt-28 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Project Hero -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">PyDeadCode — Dead Code Detector</h1>
+        <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed mb-6">
           Open-source Python 3.8+ static analyzer that finds unused imports, functions, classes, variables, and unreachable code,
           and ships a polished, self-contained HTML report for quick refactors. (Dec 2025)
         </p>
 
-        <span class="tags-label">Skills used</span>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Static Analysis</span>
-          <span class="tag">AST</span>
-          <span class="tag">Jinja2</span>
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">CLI</span>
-          <span class="tag">Open Source</span>
+        <div class="mb-6">
+          <span class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 block">Skills Used</span>
+          <div class="flex flex-wrap gap-2 justify-center">
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Python</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Static Analysis</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">AST</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Jinja2</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">HTML</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">CSS</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">CLI</span>
+            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Open Source</span>
+          </div>
         </div>
 
-        <div class="project-actions">
-          <a class="project-btn" href="https://github.com/Yash-s0/py-deadcode-finder" target="_blank" rel="noreferrer">
-            <i class="si si-github"></i> Source Code
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://github.com/Yash-s0/py-deadcode-finder" target="_blank" rel="noreferrer" class="inline-flex items-center px-6 py-3 rounded-xl font-semibold bg-primary text-white hover:bg-secondary transition-all duration-200 hover:scale-105 shadow-lg">
+            <i class="si si-github mr-2"></i> Source Code
           </a>
         </div>
       </div>
 
-      <div class="project-split">
-        <div>
-          <h3>Features</h3>
-          <ul class="features-list muted">
-            <li>Detects unused imports, functions/classes, variables, and unreachable code across a Python project.</li>
-            <li>Builds a project-wide call graph to avoid false positives on cross-module usage.</li>
-            <li>Computes a single “health score” summarizing dead-code density.</li>
-            <li>Outputs a responsive, keyboard-friendly HTML report with search and collapsible sections.</li>
+      <!-- Features & How It Works -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <h3 class="text-2xl font-bold mb-4">Features</h3>
+          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Detects unused imports, functions/classes, variables, and unreachable code across a Python project.</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Builds a project-wide call graph to avoid false positives on cross-module usage.</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Computes a single "health score" summarizing dead-code density.</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Outputs a responsive, keyboard-friendly HTML report with search and collapsible sections.</span>
+            </li>
           </ul>
         </div>
 
-        <div>
-          <h3>How it works</h3>
-          <p class="muted">
-            PyDeadCode recursively walks a target directory, parses each <code>.py</code> file into an AST, and tracks definitions,
+        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
+          <h3 class="text-2xl font-bold mb-4">How it works</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            PyDeadCode recursively walks a target directory, parses each <code class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm">.py</code> file into an AST, and tracks definitions,
             imports, and references. It then builds a call graph to understand which symbols are truly unused, classifies
-            unreachable segments (e.g., after <code>return</code> or <code>raise</code>), and renders the aggregated findings into a
+            unreachable segments (e.g., after <code class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm">return</code> or <code class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm">raise</code>), and renders the aggregated findings into a
             single-page HTML report using a bundled Jinja2 template.
           </p>
         </div>
       </div>
 
-      <hr class="section-line" />
+      <div class="border-t border-gray-200 dark:border-gray-800 my-12"></div>
 
-      <!-- GALLERY BELOW -->
-      <h3 class="gallery-title">Gallery</h3>
-      <div class="project-slider">
-        <img class="project-slide active" src="../assets/projects/deadcode/1.jpg">
-        <img class="project-slide" src="../assets/projects/deadcode/2.jpg">
-        <img class="project-slide" src="../assets/projects/deadcode/3.jpg">
-        <img class="project-slide" src="../assets/projects/deadcode/4.jpg">
-        <img class="project-slide" src="../assets/projects/deadcode/5.jpg">
-        <img class="project-slide" src="../assets/projects/deadcode/6.jpg">
+      <!-- Gallery -->
+      <div class="max-w-5xl mx-auto">
+        <h3 class="text-2xl font-bold mb-6 text-center">Gallery</h3>
+        <div class="project-slider">
+          <img class="project-slide active" src="../assets/projects/deadcode/1.jpg" alt="PyDeadCode Screenshot 1">
+          <img class="project-slide" src="../assets/projects/deadcode/2.jpg" alt="PyDeadCode Screenshot 2">
+          <img class="project-slide" src="../assets/projects/deadcode/3.jpg" alt="PyDeadCode Screenshot 3">
+          <img class="project-slide" src="../assets/projects/deadcode/4.jpg" alt="PyDeadCode Screenshot 4">
+          <img class="project-slide" src="../assets/projects/deadcode/5.jpg" alt="PyDeadCode Screenshot 5">
+          <img class="project-slide" src="../assets/projects/deadcode/6.jpg" alt="PyDeadCode Screenshot 6">
 
-        <button class="slider-btn slider-prev">&#10094;</button>
-        <button class="slider-btn slider-next">&#10095;</button>
-      </div>      
-
+          <button class="slider-btn slider-prev">&#10094;</button>
+          <button class="slider-btn slider-next">&#10095;</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -139,28 +214,45 @@
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer">&copy; 2026 Yash Sharma</footer>
 
+  <!-- JavaScript -->
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    // Toggle theme
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Initialize theme on page load
+    initTheme();
+  </script>
   <script src="../script.js"></script>
 </body>
 </html>

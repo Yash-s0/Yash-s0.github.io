@@ -1,163 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About — Yash Sharma</title>
   <meta name="description" content="Backend & Web3 engineer focused on correctness, telemetry and low latency">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'scale-in': 'scaleIn 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Smooth transitions for theme */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #00d9ff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0099ff; }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Glass effect */
+    .glass {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  
   <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="about.html" class="nav-link active">About</a></li>
-          <li><a href="experience.html" class="nav-link">Experience</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="cv.html" class="nav-link">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+  <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="text-xl md:text-2xl font-bold hover:scale-105 transition-transform duration-200">
+          <span class="text-gray-900 dark:text-white">Yash</span>
+          <span class="gradient-text">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary/10 text-primary">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </div>
+        
+        <!-- Theme Toggle & Mobile Menu -->
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <!-- Theme Toggle Button -->
+          <button id="themeToggle" class="p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110" aria-label="Toggle theme">
+            <svg id="sunIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+      
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="md:hidden hidden pb-4 space-y-2 animate-slide-up">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+        <a href="projects.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="about.html" class="block px-4 py-3 rounded-lg text-sm font-medium bg-primary/10 text-primary">About</a>
+        <a href="experience.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+        <a href="contact.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <a href="cv.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+      </div>
+    </nav>
   </header>
 
   <!-- Hero/About Section -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">About Me</span>
-        <h1 class="section-title">Backend & Web3 Engineer</h1>
-        <p class="section-description">
+  <section class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-4xl mx-auto animate-fade-in">
+        <!-- Badge -->
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-6 md:mb-8">
+          About Me
+        </span>
+        
+        <!-- Main Heading -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 leading-tight">
+          Backend & Web3 <span class="gradient-text">Engineer</span>
+        </h1>
+        
+        <!-- Description -->
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
           I design and operate production-grade event pipelines and APIs. My work covers data modeling, 
           partitioning, monitoring and observability — I prioritize predictable performance, clean abstractions, 
           and high-signal telemetry pipelines.
         </p>
-      </div>
-      
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="projects.html" class="btn btn-primary">View Projects</a>
-        <a href="cv.html" class="btn btn-secondary" style="margin-left: 1rem;">Download CV</a>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 md:mb-16">
+          <a href="projects.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-gray-900 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-200">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="9" y1="3" x2="9" y2="21"></line>
+            </svg>
+            View Projects
+          </a>
+          <a href="cv.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-2 border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary hover:scale-105 transition-all duration-200">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download CV
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Technologies</span>
-        <h2 class="section-title">Skills & Tools</h2>
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-100 dark:bg-gray-800/50">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-4">Technologies</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Skills & Tools</h2>
       </div>
       
-      <div class="skills-grid">
-        <div class="skill-item"><i class="si si-python skill-icon"></i><span class="skill-name">Python</span></div>
-        <div class="skill-item"><i class="si si-flask skill-icon"></i><span class="skill-name">Flask</span></div>
-        <div class="skill-item"><i class="si si-fastapi skill-icon"></i><span class="skill-name">FastAPI</span></div>
-        <div class="skill-item"><i class="si si-apachekafka skill-icon"></i><span class="skill-name">Kafka</span></div>
-        <div class="skill-item"><i class="si si-postgresql skill-icon"></i><span class="skill-name">PostgreSQL</span></div>
-        <div class="skill-item"><i class="si si-redis skill-icon"></i><span class="skill-name">Redis</span></div>
-        <div class="skill-item"><i class="si si-mongodb skill-icon"></i><span class="skill-name">MongoDB</span></div>
-        <div class="skill-item"><i class="si si-mysql skill-icon"></i><span class="skill-name">MySQL</span></div>
-        <div class="skill-item"><i class="si si-sqlite skill-icon"></i><span class="skill-name">SQLite</span></div>
-        <div class="skill-item"><i class="si si-quest skill-icon"></i><span class="skill-name">QuestDB</span></div>
-        <div class="skill-item"><i class="si si-timescale skill-icon"></i><span class="skill-name">TimescaleDB</span></div>
-        <div class="skill-item"><i class="si si-elasticsearch skill-icon"></i><span class="skill-name">Elasticsearch</span></div>
-        <div class="skill-item"><i class="si si-docker skill-icon"></i><span class="skill-name">Docker</span></div>
-        <div class="skill-item"><i class="si si-linux skill-icon"></i><span class="skill-name">Linux</span></div>
-        <div class="skill-item"><i class="si si-ubuntu skill-icon"></i><span class="skill-name">Ubuntu</span></div>
-        <div class="skill-item"><i class="si si-git skill-icon"></i><span class="skill-name">Git</span></div>
-        <div class="skill-item"><i class="si si-github skill-icon"></i><span class="skill-name">GitHub</span></div>
-        <div class="skill-item"><i class="si si-gitlab skill-icon"></i><span class="skill-name">GitLab</span></div>
-        <div class="skill-item"><i class="si si-amazons3 skill-icon"></i><span class="skill-name">AWS S3</span></div>
-        <div class="skill-item"><i class="si si-prometheus skill-icon"></i><span class="skill-name">Prometheus</span></div>
-        <div class="skill-item"><i class="si si-pm2 skill-icon"></i><span class="skill-name">PM2</span></div>
-        <div class="skill-item"><i class="si si-dbeaver skill-icon"></i><span class="skill-name">DBeaver</span></div>
-        <div class="skill-item"><i class="si si-javascript skill-icon"></i><span class="skill-name">JavaScript</span></div>
-        <div class="skill-item"><i class="si si-html5 skill-icon"></i><span class="skill-name">HTML5</span></div>
-        <div class="skill-item"><i class="si si-css3 skill-icon"></i><span class="skill-name">CSS3</span></div>
-        <div class="skill-item"><i class="si si-ethereum skill-icon"></i><span class="skill-name">Ethereum</span></div>
-        <div class="skill-item"><i class="si si-web3dotjs skill-icon"></i><span class="skill-name">Web3.js</span></div>
-        <div class="skill-item"><i class="si si-telegram skill-icon"></i><span class="skill-name">Telegram</span></div>
+      <!-- Skills Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 md:gap-6">
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-python text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Python</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-flask text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Flask</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-fastapi text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">FastAPI</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-apachekafka text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Kafka</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-postgresql text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">PostgreSQL</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-redis text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Redis</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-mongodb text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">MongoDB</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-mysql text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">MySQL</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-sqlite text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">SQLite</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-quest text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">QuestDB</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-timescale text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">TimescaleDB</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-elasticsearch text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Elasticsearch</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-docker text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Docker</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-linux text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Linux</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-ubuntu text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Ubuntu</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-git text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Git</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-github text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">GitHub</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-gitlab text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">GitLab</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-amazons3 text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">AWS S3</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-prometheus text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Prometheus</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-pm2 text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">PM2</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-dbeaver text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">DBeaver</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-javascript text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">JavaScript</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-html5 text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">HTML5</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-css3 text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">CSS3</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-ethereum text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Ethereum</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-web3dotjs text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Web3.js</span>
+        </div>
+        <div class="flex flex-col items-center p-4 md:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <i class="si si-telegram text-3xl md:text-4xl text-primary mb-3"></i>
+          <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300">Telegram</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Highlights Section -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Specializations</span>
-        <h2 class="section-title">Key Highlights</h2>
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-4">Specializations</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Key Highlights</h2>
       </div>
       
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <!-- Highlights Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
               <line x1="8" y1="21" x2="16" y2="21"></line>
               <line x1="12" y1="17" x2="12" y2="21"></line>
             </svg>
           </div>
-          <h3 class="card-title">Systems Design</h3>
-          <p class="card-description">
+          <h3 class="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">Systems Design</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
             Designing partitioned, replayable event consumers, correct compute flows, and low-latency APIs.
           </p>
         </div>
         
-        <div class="card">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
             </svg>
           </div>
-          <h3 class="card-title">Observability</h3>
-          <p class="card-description">
+          <h3 class="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">Observability</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
             Prometheus/Grafana instrumentation, p95 latency tuning and runbook-driven ops.
           </p>
         </div>
         
-        <div class="card">
-          <div class="card-icon">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 dark:border-gray-700">
+          <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4 md:mb-6">
+            <svg class="w-6 h-6 md:w-8 md:h-8 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
           </div>
-          <h3 class="card-title">On-chain</h3>
-          <p class="card-description">
+          <h3 class="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">On-chain</h3>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
             Decoder logic for Uniswap V4 logs, multi-chain listeners & node RPC handling.
           </p>
         </div>
@@ -166,28 +359,44 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer">&copy; 2026 Yash Sharma</footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    // Toggle theme
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Initialize theme on page load
+    initTheme();
+  </script>
 </body>
 </html>

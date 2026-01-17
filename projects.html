@@ -6,215 +6,270 @@
   <title>Projects — Yash Sharma</title>
   <meta name="description" content="Portfolio of backend, Web3, and static analysis projects">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+            'scale-in': 'scaleIn 0.6s ease-out forwards'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.9)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
   <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="projects.html" class="nav-link active">Projects</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="experience.html" class="nav-link">Experience</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="cv.html" class="nav-link">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2 text-xl font-bold hover:opacity-80 transition-opacity">
+          <span>Yash</span>
+          <span class="text-primary">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </nav>
+        
+        <!-- Theme Toggle & Mobile Menu Button -->
+        <div class="flex items-center space-x-2">
+          <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+            <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
+        <div class="flex flex-col space-y-2">
+          <a href="index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <!-- Projects Section -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Portfolio</span>
-        <h1 class="section-title">All Projects</h1>
-        <p class="section-description">
+  <section class="pt-28 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/20 text-primary dark:bg-primary/10 mb-4">Portfolio</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">All Projects</h1>
+        <p class="text-gray-700 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
           A comprehensive collection of my work spanning backend development, static analysis tools, 
           Web3 applications, and frontend projects. Click on any card to view detailed information.
         </p>
       </div>
       
-      <div class="grid grid-3">
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <!-- PyDeadCode -->
-        <a href="projects/deadcode.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/deadcode.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">PyDeadCode</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">PyDeadCode</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Dead Code Detector — Static analysis tool that finds unused imports, functions, variables, and unreachable code with a polished HTML report.
             </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Static Analysis</span>
-              <span class="tag">AST</span>
-              <span class="tag">Jinja2</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Static Analysis</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">AST</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Jinja2</span>
             </div>
           </div>
         </a>
         
         <!-- PyDuplicate -->
-        <a href="projects/duplicate.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/duplicate.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">PyDuplicate</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">PyDuplicate</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Duplicate & Complexity Analyzer — Highlights duplicated code, complex functions, and near-duplicate assets via an interactive HTML dashboard.
             </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Radon</span>
-              <span class="tag">Datasketch</span>
-              <span class="tag">Jinja2</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Radon</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Datasketch</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Jinja2</span>
             </div>
           </div>
         </a>
         
         <!-- Binance -->
-        <a href="projects/binance.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/binance.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <line x1="12" y1="1" x2="12" y2="23"></line>
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Binance 24h Tracker</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Binance 24h Tracker</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Real-time cryptocurrency tracker using Binance API with live price updates, 24h high/low stats through Flask backend.
             </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Flask</span>
-              <span class="tag">Binance API</span>
-              <span class="tag">JavaScript</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Flask</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Binance API</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JavaScript</span>
             </div>
           </div>
         </a>
         
         <!-- URL Shortener -->
-        <a href="projects/url.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/url.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
               <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">URL Shortener</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">URL Shortener</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Full-stack URL shortening platform with JWT authentication, SQLAlchemy persistence, and custom frontend.
             </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">SQLAlchemy</span>
-              <span class="tag">JWT</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">FastAPI</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">SQLAlchemy</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JWT</span>
             </div>
           </div>
         </a>
         
         <!-- Contacts API -->
-        <a href="projects/contacts.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/contacts.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
               <circle cx="9" cy="7" r="4"></circle>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Contacts API</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Contacts API</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               FastAPI-based contacts management system with full CRUD operations and JSON file persistence.
             </p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">REST API</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">FastAPI</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">REST API</span>
             </div>
           </div>
         </a>
         
         <!-- Rock Paper Scissors -->
-        <a href="projects/rps.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/rps.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M9 11V6l5 4-5 4v-5"></path>
               <circle cx="12" cy="12" r="10"></circle>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Rock Paper Scissors</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Rock Paper Scissors</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Interactive browser-based game with score tracking, animations, and responsive design.
             </p>
-            <div class="project-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JavaScript</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">HTML</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">CSS</span>
             </div>
           </div>
         </a>
         
         <!-- Etch-A-Sketch -->
-        <a href="projects/etch.html" class="project-card" style="text-decoration: none; color: inherit;">
-          <div class="project-image" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); display: flex; align-items: center; justify-content: center;">
-            <svg width="60" height="60" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
+        <a href="projects/etch.html" class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2 border border-gray-100 dark:border-gray-700">
+          <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
               <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
               <path d="M2 2l7.586 7.586"></path>
               <circle cx="11" cy="11" r="2"></circle>
             </svg>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Etch-A-Sketch</h3>
-            <p class="project-description">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Etch-A-Sketch</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
               Canvas-based drawing application with color selection, brush sizes, and grid customization.
             </p>
-            <div class="project-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML</span>
-              <span class="tag">Canvas API</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JavaScript</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">HTML</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Canvas API</span>
             </div>
           </div>
         </a>
@@ -223,28 +278,44 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer">&copy; 2026 Yash Sharma</footer>
 
-  <script src="script.js"></script>
+  <!-- JavaScript -->
+  <script>
+    // Theme Toggle with LocalStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Initialize theme from localStorage or system preference
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    // Toggle theme
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Initialize theme on page load
+    initTheme();
+  </script>
 </body>
 </html>

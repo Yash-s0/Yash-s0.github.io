@@ -1,70 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV — Yash Sharma</title>
   <meta name="description" content="Curriculum Vitae - Backend & Web3 Engineer">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00d9ff',
+            secondary: '#0099ff',
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.6s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'scale-in': 'scaleIn 0.3s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scaleIn: {
+              '0%': { opacity: '0', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    * { font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'JetBrains Mono', monospace; }
+    
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #00d9ff; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0099ff; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #00d9ff 0%, #0099ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .glass {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    @media print {
+      body { background: white !important; color: black !important; }
+      header, footer, button { display: none !important; }
+      .no-print { display: none !important; }
+    }
+  </style>
 </head>
-<body>
-  <!-- Header Navigation -->
-  <header class="header">
-    <div class="nav-container">
-      <a href="index.html" class="logo">
-        <span>Yash</span>
-        <span class="logo-accent">Sharma</span>
-      </a>
-      
-      <nav>
-        <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="experience.html" class="nav-link">Experience</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="cv.html" class="nav-link active">CV</a></li>
-        </ul>
-      </nav>
-      
-      <div style="display: flex; align-items: center;">
-        <button class="theme-toggle" aria-label="Toggle theme">
-          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  
+  <header class="fixed top-0 left-0 right-0 z-50 glass bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800 no-print">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="text-xl md:text-2xl font-bold hover:scale-105 transition-transform duration-200">
+          <span class="text-gray-900 dark:text-white">Yash</span>
+          <span class="gradient-text">Sharma</span>
+        </a>
         
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+          <a href="projects.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+          <a href="about.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+          <a href="experience.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+          <a href="contact.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+          <a href="cv.html" class="px-4 py-2 rounded-lg text-sm font-medium bg-primary/10 text-primary">CV</a>
+        </div>
+        
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <button id="themeToggle" class="p-2.5 md:p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110" aria-label="Toggle theme">
+            <svg id="sunIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg id="moonIcon" class="w-5 h-5 md:w-6 md:h-6 text-gray-800 dark:text-gray-200 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          
+          <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Toggle menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+      
+      <div id="mobileMenu" class="md:hidden hidden pb-4 space-y-2 animate-slide-up">
+        <a href="index.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
+        <a href="projects.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Projects</a>
+        <a href="about.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
+        <a href="experience.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
+        <a href="contact.html" class="block px-4 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
+        <a href="cv.html" class="block px-4 py-3 rounded-lg text-sm font-medium bg-primary/10 text-primary">CV</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- CV Section -->
-  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
-    <div class="container" style="max-width: 900px;">
-      <div class="section-header" style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem;">
+  <section class="pt-24 md:pt-32 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-12 animate-fade-in">
         <div>
-          <span class="section-label">Resume</span>
-          <h1 class="section-title">Curriculum Vitae</h1>
-          <p class="section-description">
-            A quick overview of my core profile. Download the full PDF for detailed information.
-          </p>
+          <span class="inline-block px-4 py-2 rounded-full text-sm font-medium bg-primary/10 text-primary mb-4">Resume</span>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 leading-tight">Curriculum <span class="gradient-text">Vitae</span></h1>
+          <p class="text-gray-600 dark:text-gray-400">A quick overview of my core profile. Download the full PDF for detailed information.</p>
         </div>
-        <a class="btn btn-primary" href="cv/YashSharma_CV.pdf" download style="white-space: nowrap;">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 0.5rem;">
+        <a href="cv/YashSharma_CV.pdf" download class="no-print w-full md:w-auto inline-flex items-center justify-center px-6 py-3 rounded-xl text-base font-semibold bg-primary hover:bg-primary/90 text-gray-900 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 transition-all duration-200 whitespace-nowrap">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -72,208 +146,220 @@
           Download PDF
         </a>
       </div>
-      
-      <!-- Summary Block -->
-      <div class="card" style="margin-bottom: 2rem;">
-        <h2>Yash Sharma</h2>
-        <p style="opacity: 0.7; margin-bottom: 1.5rem;">Backend & Web3 Engineer • New Delhi, India</p>
+
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 dark:border-gray-700 mb-8">
+        <h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Yash Sharma</h2>
+        <p class="text-primary font-medium mb-6">Backend & Web3 Engineer • New Delhi, India</p>
         
-        <div class="grid grid-2" style="gap: 1rem;">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <strong style="display: block; margin-bottom: 0.25rem;">Email</strong>
-            <span style="opacity: 0.8;">yash.ssharma@outlook.com</span>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">Email</h3>
+            <p class="text-gray-900 dark:text-white">yash.ssharma@outlook.com</p>
           </div>
           <div>
-            <strong style="display: block; margin-bottom: 0.25rem;">Phone</strong>
-            <span style="opacity: 0.8;">+91-73033-25661</span>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">Phone</h3>
+            <p class="text-gray-900 dark:text-white">+91-73033-25661</p>
           </div>
           <div>
-            <strong style="display: block; margin-bottom: 0.25rem;">LinkedIn</strong>
-            <a href="https://linkedin.com/in/yash-ssharma" target="_blank" style="opacity: 0.8;">linkedin.com/in/yash-ssharma</a>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">LinkedIn</h3>
+            <a href="https://linkedin.com/in/yash-ssharma" target="_blank" class="text-primary hover:underline">linkedin.com/in/yash-ssharma</a>
           </div>
           <div>
-            <strong style="display: block; margin-bottom: 0.25rem;">Location</strong>
-            <span style="opacity: 0.8;">New Delhi, India</span>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-1">Location</h3>
+            <p class="text-gray-900 dark:text-white">New Delhi, India</p>
           </div>
         </div>
       </div>
 
-      <!-- Skills Section -->
-      <div class="card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1.5rem;">Skills</h3>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 dark:border-gray-700 mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Skills</h3>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Backend & APIs</h4>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Flask</span>
-            <span class="tag">REST APIs</span>
-            <span class="tag">JWT</span>
-            <span class="tag">WebSocket</span>
-            <span class="tag">Microservices</span>
-            <span class="tag">Async Programming</span>
-            <span class="tag">Swagger API</span>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Backend & APIs</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">FastAPI</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Flask</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">REST APIs</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JWT</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">WebSocket</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Microservices</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Async Programming</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Swagger API</span>
+            </div>
           </div>
-        </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Web3 & Blockchain</h4>
-          <div class="project-tags">
-            <span class="tag">Web3</span>
-            <span class="tag">Ethereum</span>
-            <span class="tag">Blockchain</span>
-            <span class="tag">Production Debugging</span>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Web3 & Blockchain</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Web3</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Ethereum</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Blockchain</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Production Debugging</span>
+            </div>
           </div>
-        </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Databases & Storage</h4>
-          <div class="project-tags">
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">MySQL</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">QuestDB</span>
-            <span class="tag">Timescale DB</span>
-            <span class="tag">DBMS</span>
-            <span class="tag">Time-Series DBs</span>
-            <span class="tag">Indexing</span>
-            <span class="tag">Query Optimization</span>
-            <span class="tag">Caching</span>
-            <span class="tag">Pagination</span>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Databases & Storage</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">PostgreSQL</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">MongoDB</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">MySQL</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">SQLite</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">QuestDB</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Timescale DB</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">DBMS</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Time-Series DBs</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Indexing</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Query Optimization</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Caching</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Pagination</span>
+            </div>
           </div>
-        </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Infrastructure & DevOps</h4>
-          <div class="project-tags">
-            <span class="tag">Linux</span>
-            <span class="tag">Ubuntu</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Redis</span>
-            <span class="tag">Apache Kafka</span>
-            <span class="tag">Elasticsearch</span>
-            <span class="tag">Amazon S3</span>
-            <span class="tag">Prometheus</span>
-            <span class="tag">PM2</span>
-            <span class="tag">ETL Pipelines</span>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Infrastructure & DevOps</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Linux</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Ubuntu</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Docker</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Redis</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Apache Kafka</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Elasticsearch</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Amazon S3</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Prometheus</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">PM2</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">ETL Pipelines</span>
+            </div>
           </div>
-        </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Development Tools</h4>
-          <div class="project-tags">
-            <span class="tag">Git</span>
-            <span class="tag">Github</span>
-            <span class="tag">Gitlab</span>
-            <span class="tag">DBeaver</span>
-            <span class="tag">AST</span>
-            <span class="tag">Jinja2</span>
-            <span class="tag">Radon</span>
-            <span class="tag">Datasketch</span>
-            <span class="tag">Static Analysis</span>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Development Tools</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Git</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Github</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Gitlab</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">DBeaver</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">AST</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Jinja2</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Radon</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Datasketch</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Static Analysis</span>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Frontend & Other</h4>
-          <div class="project-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML5</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Telegram Bot</span>
+          <div>
+            <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Frontend & Other</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">JavaScript</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">HTML5</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">CSS</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary">Telegram Bot</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Experience Section -->
-      <div class="card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1.5rem;">Recent Experience</h3>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 dark:border-gray-700 mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Recent Experience</h3>
         
-        <div style="margin-bottom: 1.5rem;">
-          <strong style="display: block; margin-bottom: 0.25rem;">Software Engineer I — Stackera</strong>
-          <span style="opacity: 0.7; font-size: 0.875rem;">Jul 2023 — Present</span>
-          <p style="opacity: 0.8; margin-top: 0.5rem;">
-            Backend services for betting systems, blockchain listeners, FastAPI microservices, Kafka ETL pipelines.
-          </p>
-        </div>
+        <div class="space-y-6">
+          <div class="border-l-4 border-primary pl-4">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Software Engineer I — Stackera</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Jul 2023 — Present</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              Backend services for betting systems, blockchain listeners, FastAPI microservices, Kafka ETL pipelines.
+            </p>
+          </div>
 
-        <div style="margin-bottom: 1.5rem;">
-          <strong style="display: block; margin-bottom: 0.25rem;">Backend & Web3 Engineer — DexCheck (Client Project)</strong>
-          <span style="opacity: 0.7; font-size: 0.875rem;">Jul 2023 — Oct 2025</span>
-          <p style="opacity: 0.8; margin-top: 0.5rem;">
-            Multi-chain listeners (ETH/BSC/Base), latency optimisation (~120ms P95), partitioned analytics pipelines.
-          </p>
-        </div>
+          <div class="border-l-4 border-secondary pl-4">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Backend & Web3 Engineer — DexCheck (Client Project)</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Jul 2023 — Oct 2025</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              Multi-chain listeners (ETH/BSC/Base), latency optimisation (~120ms P95), partitioned analytics pipelines.
+            </p>
+          </div>
 
-        <div>
-          <strong style="display: block; margin-bottom: 0.25rem;">Software Development Intern — Stackera</strong>
-          <span style="opacity: 0.7; font-size: 0.875rem;">Apr 2023 — Jun 2023</span>
-          <p style="opacity: 0.8; margin-top: 0.5rem;">
-            Python/Flask backend work, improved prototype processing time by 20%.
-          </p>
+          <div class="border-l-4 border-gray-300 dark:border-gray-600 pl-4">
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white">Software Development Intern — Stackera</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Apr 2023 — Jun 2023</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              Python/Flask backend work, improved prototype processing time by 20%.
+            </p>
+          </div>
         </div>
       </div>
 
-      <!-- Projects Section -->
-      <div class="card" style="margin-bottom: 2rem;">
-        <h3 style="margin-bottom: 1.5rem;">Open Source Projects</h3>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 dark:border-gray-700 mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Open Source Projects</h3>
         
-        <div style="margin-bottom: 1.5rem;">
-          <strong style="display: block; margin-bottom: 0.25rem;">PyDeadCode — Dead Code Detector</strong>
-          <span style="opacity: 0.7; font-size: 0.875rem;">Dec 2025, Open Source</span>
-          <p style="opacity: 0.8; margin-top: 0.5rem;">
-            Python 3.8+ static analysis tool that detects unused imports, functions/classes, variables, and unreachable code
-            and generates a single-page HTML report for dead-code cleanups.
-          </p>
-        </div>
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">PyDeadCode — Dead Code Detector</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Dec 2025, Open Source</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              Python 3.8+ static analysis tool that detects unused imports, functions/classes, variables, and unreachable code
+              and generates a single-page HTML report for dead-code cleanups.
+            </p>
+          </div>
 
-        <div>
-          <strong style="display: block; margin-bottom: 0.25rem;">PyDuplicate — Duplicate & Complexity Analyzer</strong>
-          <span style="opacity: 0.7; font-size: 0.875rem;">Dec 2025, Open Source</span>
-          <p style="opacity: 0.8; margin-top: 0.5rem;">
-            Analyzer that surfaces duplicated code, cyclomatic-complexity hotspots, and fuzzy duplicates using MinHash + LSH,
-            with a responsive HTML dashboard for codebase reviews.
-          </p>
+          <div>
+            <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-1">PyDuplicate — Duplicate & Complexity Analyzer</h4>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Dec 2025, Open Source</p>
+            <p class="text-gray-600 dark:text-gray-300">
+              Analyzer that surfaces duplicated code, cyclomatic-complexity hotspots, and fuzzy duplicates using MinHash + LSH,
+              with a responsive HTML dashboard for codebase reviews.
+            </p>
+          </div>
         </div>
       </div>
 
-      <!-- Education Section -->
-      <div class="card">
-        <h3 style="margin-bottom: 1.5rem;">Education</h3>
-        <strong style="display: block; margin-bottom: 0.25rem;">BCA — Chaudhary Charan Singh University</strong>
-        <span style="opacity: 0.7; font-size: 0.875rem;">2020–2023</span>
-        <p style="opacity: 0.8; margin-top: 0.5rem;">
-          Relevant coursework: Data Structures, Web Development, Algorithms.
-        </p>
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-100 dark:border-gray-700">
+        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Education</h3>
+        <div class="border-l-4 border-primary pl-4">
+          <h4 class="text-lg font-bold text-gray-900 dark:text-white">BCA — Chaudhary Charan Singh University</h4>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">2020–2023</p>
+          <p class="text-gray-600 dark:text-gray-300">
+            Relevant coursework: Data Structures, Web Development, Algorithms.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="social-links">
-          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
-            <i class="si si-github"></i>
-          </a>
-          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
-            <i class="si si-linkedin"></i>
-          </a>
-          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </a>
-        </div>
-        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <footer class="footer no-print">&copy; 2026 Yash Sharma</footer>
 
-  <script src="script.js"></script>
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    const initTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = savedTheme || systemTheme;
+      
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+    };
+    
+    themeToggle?.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+    });
+    
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    initTheme();
+  </script>
 </body>
 </html>

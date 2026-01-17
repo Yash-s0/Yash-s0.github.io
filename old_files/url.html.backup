@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener (API + Frontend) — Yash Sharma</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span>Yash</span>
+        <span class="logo-accent">Sharma</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+          <li><a href="../experience.html" class="nav-link">Experience</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+          <li><a href="../cv.html" class="nav-link">CV</a></li>
+        </ul>
+      </nav>
+      
+      <div style="display: flex; align-items: center;">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Project Content -->
+  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
+    <div class="container">
+
+<div class="project-content">
+        <div class="project-hero">
+          <div class="h2"><div class="dot"></div><h2>URL Shortener (API + Frontend)</h2></div>
+          <p class="muted">
+            Fully featured URL shortener with JWT authentication, SQLAlchemy storage,
+            and a complete custom frontend UI.
+          </p>
+
+          <span class="tags-label">Skills used</span>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">SQLAlchemy</span>
+            <span class="tag">JWT</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Git</span>
+            <span class="tag">passlib</span>
+          </div>
+
+          <div class="project-actions">
+            <a class="project-btn" href="https://github.com/Yash-s0/url_shortner" target="_blank">Backend Code</a>
+            <a class="project-btn" href="https://github.com/Yash-s0/url_shortner_frontend" target="_blank">Frontend Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURES + HOW IT WORKS -->
+      <div class="project-content">
+        <div class="project-split">
+
+          <div>
+            <h3>Features</h3>
+            <ul class="features-list">
+              <li>User registration & login (JWT)</li>
+              <li>Stores all URLs + user search history</li>
+              <li>FastAPI backend + SQLAlchemy ORM storage</li>
+              <li>Full custom frontend UI built from scratch</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>How it works</h3>
+            <p class="muted">
+              FastAPI provides secure endpoints for registering users, logging in,
+              and shortening URLs.  
+              SQLAlchemy stores the mapping of long → short URLs and user history.  
+              The frontend communicates with the backend via JWT-authenticated API calls.
+            </p>
+          </div>
+
+        </div>
+
+        <hr class="section-line" />
+      </div>
+
+      <!-- GALLERY -->
+      <div class="project-gallery">
+        <h3 class="gallery-title">Gallery</h3>
+
+        <div class="project-slider">
+          <img class="project-slide active" src="../assets/projects/url/1.jpg" alt="URL Shortener Screenshot 1">
+          <img class="project-slide" src="../assets/projects/url/2.jpg" alt="URL Shortener Screenshot 2">
+          <img class="project-slide" src="../assets/projects/url/3.jpg" alt="URL Shortener Screenshot 3">
+
+          <button class="slider-btn slider-prev">&#10094;</button>
+          <button class="slider-btn slider-next">&#10095;</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Image modal popup -->
+  <div id="image-modal" class="image-modal" aria-hidden="true">
+    <div class="image-modal__backdrop" data-action="close"></div>
+    <div class="image-modal__content" role="dialog" aria-modal="true">
+      <button class="image-modal__close" data-action="close" aria-label="Close">×</button>
+      <button class="image-modal__nav prev" data-action="prev" aria-label="Previous">‹</button>
+      <div class="image-modal__frame">
+        <img src="" alt="" class="image-modal__img">
+      </div>
+      <button class="image-modal__nav next" data-action="next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="si si-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="si si-linkedin"></i>
+          </a>
+          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
