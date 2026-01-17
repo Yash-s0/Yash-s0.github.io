@@ -1,37 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Etch-A-Sketch Canvas App — Yash Sharma</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
 </head>
-
 <body>
-  <canvas id="bg-canvas"></canvas>
-
+  <!-- Header Navigation -->
   <header class="header">
-    <a href="../index.html" class="brand">Yash <span class="accent">Sharma</span></a>
-    <!-- <div class="brand">Yash <span class="accent">Sharma</span></div> -->
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-      <span aria-hidden="true"></span>
-    </button>
-    <nav class="nav">
-      <a href="../index.html">Home</a>
-      <a href="../projects.html" class="active">Projects</a>
-      <a href="../about.html">About</a>
-      <a href="../experience.html">Experience</a>
-      <a href="../contact.html">Contact</a>
-      <a href="../cv.html">CV</a>
-    </nav>
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <span>Yash</span>
+        <span class="logo-accent">Sharma</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="../projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="../about.html" class="nav-link">About</a></li>
+          <li><a href="../experience.html" class="nav-link">Experience</a></li>
+          <li><a href="../contact.html" class="nav-link">Contact</a></li>
+          <li><a href="../cv.html" class="nav-link">CV</a></li>
+        </ul>
+      </nav>
+      
+      <div style="display: flex; align-items: center;">
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <article class="page enter-from-right enter-in">
+  <!-- Project Content -->
+  <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
+    <div class="container">
 
-      <!-- INTRO -->
-      <div class="project-content">
+<div class="project-content">
         <div class="project-hero">
           <div class="h2"><div class="dot"></div><h2>Etch-A-Sketch Canvas App</h2></div>
 
@@ -105,8 +129,8 @@
         </div>
       </div>
 
-    </article>
-  </main>
+    </div>
+  </section>
 
   <!-- Image modal popup -->
   <div id="image-modal" class="image-modal" aria-hidden="true">
@@ -121,7 +145,29 @@
     </div>
   </div>
 
-  <footer class="footer">© 2025 Yash Sharma — Etch-a-Sketch</footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://github.com/Yash-s0" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="si si-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/yash-s0" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="si si-linkedin"></i>
+          </a>
+          <a href="mailto:yash@example.com" class="social-link" aria-label="Email">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+        <p>&copy; 2026 Yash Sharma. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="../script.js"></script>
 </body>
 </html>

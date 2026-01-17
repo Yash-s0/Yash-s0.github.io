@@ -1,482 +1,193 @@
-(() => {
-  /* ----- Canvas background (grid + particles) ----- */
-  const canvas = document.getElementById("bg-canvas");
-  const ctx = canvas && canvas.getContext ? canvas.getContext("2d") : null;
-  let W = innerWidth,
-    H = innerHeight;
-  const particles = [];
-  const PARTICLE_COUNT = 120;
-  function resizeCanvas() {
-    if (!canvas) return;
-    W = canvas.width = innerWidth;
-    H = canvas.height = innerHeight;
-  }
-  window.addEventListener("resize", resizeCanvas);
-  if (canvas && ctx) {
-    resizeCanvas();
-    // create particles
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 1.8 + 0.4,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        o: Math.random() * 0.7 + 0.15,
-      });
+/* ============================================================================
+   MODERN PORTFOLIO - VANILLA JAVASCRIPT
+   Theme Toggle, Navigation, Smooth Scrolling, & Interactions
+   ============================================================================ */
+
+(function() {
+  'use strict';
+
+  /* --------------------------------------------------------------------------
+     THEME TOGGLE - Dark/Light Mode with localStorage
+     -------------------------------------------------------------------------- */
+  const themeToggle = document.querySelector('.theme-toggle');
+  const html = document.documentElement;
+  
+  // Get saved theme or default to system preference
+  function getInitialTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
     }
-    function drawBg() {
-      ctx.clearRect(0, 0, W, H);
-      // soft radial vignette
-      const g = ctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, "rgba(4,6,12,0.02)");
-      g.addColorStop(1, "rgba(0,0,0,0.16)");
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, W, H);
-
-      // grid lines
-      const GAP = Math.max(60, Math.floor(W / 18));
-      ctx.strokeStyle = "rgba(77,166,255,0.03)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let x = 0; x < W; x += GAP) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, H);
-      }
-      for (let y = 0; y < H; y += GAP) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(W, y);
-      }
-      ctx.stroke();
-
-      // particles
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < -20) p.x = W + 20;
-        if (p.x > W + 20) p.x = -20;
-        if (p.y < -20) p.y = H + 20;
-        if (p.y > H + 20) p.y = -20;
-        ctx.beginPath();
-        ctx.fillStyle = `rgba(0,240,255,${p.o})`;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(drawBg);
-    }
-    requestAnimationFrame(drawBg);
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-
-  /* ----- Cursor glow parallax ----- */
-  const cursor = document.createElement("div");
-  cursor.className = "cursor-glow";
-  document.body.appendChild(cursor);
-  window.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
-
-  /* ----- Smooth hash routing (no reload) ----- */
-  const pages = [
-    "index.html",
-    "about.html",
-    "experience.html",
-    "projects.html",
-    "contact.html",
-    "cv.html",
-  ];
-
-  const PROJECT_DETAILS = {
-    binance: {
-      title: "Binance 24h Crypto Tracker",
-      summary:
-        "Real-time dashboard that polls Binance public endpoints and surfaces price, highs/lows, and volume via a Flask backend.",
-      features: [
-        "Live updates by polling Binance API snapshots",
-        "Shows price, 24h high/low, and volume",
-        "Lightweight Flask backend for rate-limited proxying",
-        "Responsive neon UI with auto-rotating gallery",
-      ],
-      skills: ["Python", "Flask", "Binance API", "JavaScript", "HTML5", "CSS"],
-      internal: "projects/binance.html",
-      repo: "https://github.com/Yash-s0/binance",
-    },
-    deadcode: {
-      title: "PyDeadCode — Dead Code Detector",
-      summary:
-        "Python 3.8+ static analyzer that detects unused imports, functions, classes, variables, and unreachable code and wraps it in a polished, self-contained HTML report.",
-      features: [
-        "Project-wide scan using Python AST and a call graph",
-        "Finds unused imports, functions/classes, variables, and unreachable code",
-        "Computes an overall code health score",
-        "Generates a responsive, single-page HTML report with search and filters",
-      ],
-      skills: [
-        "Python",
-        "Static Analysis",
-        "AST",
-        "Jinja2",
-        "HTML5/CSS",
-      ],
-      internal: "projects/deadcode.html",
-      repo: "https://github.com/Yash-s0/py-deadcode-finder",
-    },
-    duplicate: {
-      title: "PyDuplicate — Duplicate & Complexity Analyzer",
-      summary:
-        "Open-source Python tool that surfaces duplicated code, complex functions, and even near-duplicate assets via a single interactive HTML dashboard.",
-      features: [
-        "Scans codebases for function- and file-level duplication",
-        "Uses cyclomatic complexity metrics to flag hotspots",
-        "Leverages MinHash + LSH for fuzzy duplicate detection",
-        "Outputs a responsive HTML report with collapsible sections and visual cues",
-      ],
-      skills: [
-        "Python",
-        "Static Analysis",
-        "Radon",
-        "Datasketch",
-        "HTML5",
-        "CSS",
-        "Jinja2",
-      ],
-      internal: "projects/duplicate.html",
-      repo: "https://github.com/Yash-s0/py-duplicate-finder",
-    },
-    url: {
-      title: "URL Shortener (API + UI)",
-      summary:
-        "End-to-end URL platform with JWT auth, FastAPI backend, SQLAlchemy persistence, and a bespoke frontend.",
-      features: [
-        "JWT-secured registration and login",
-        "Short/long URL persistence with SQLAlchemy",
-        "Searchable history per-user",
-        "Custom UI powered by vanilla JS + CSS",
-      ],
-      skills: [
-        "Python",
-        "FastAPI",
-        "SQLAlchemy",
-        "JWT",
-        "JavaScript",
-        "HTML5",
-        "CSS",
-      ],
-      internal: "projects/url.html",
-      repo: "https://github.com/yash-s0/url_shortner",
-    },
-    rps: {
-      title: "Rock Paper Scissors",
-      summary:
-        "A playful frontend game with smooth animations, score tracking, and quick rounds — built to showcase polished JS UX.",
-      features: [
-        "Instant gameplay with win/lose/draw animations",
-        "Running scoreboard + streak logic",
-        "Responsive layout for touch/desktop",
-        "Lightweight deployment on GitHub Pages",
-      ],
-      skills: ["JavaScript", "HTML5", "CSS"],
-      internal: "projects/rps.html",
-      repo: "https://github.com/yash-s0/rps_web",
-    },
-  };
-  function navigateTo(hashOrPath) {
-    // if anchor starts with '#', scroll to element on same page.
-    if (!hashOrPath) hashOrPath = "index.html";
-    // if it's a path like 'about.html' load location.href accordingly
-    // here we assume we are served from file system or GH pages: we navigate by setting location.href
-    // BUT we also support single-file SPA behavior using sections inside index.html via '#home' anchors.
-    // For this theme we'll prefer real pages: so just set location to path.
-    if (hashOrPath.startsWith("#")) {
-      const id = hashOrPath.slice(1);
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-    // if path is same as current file, do nothing
-    const current = location.pathname.split("/").pop() || "index.html";
-    if (current === hashOrPath) return;
-    // navigate
-    location.href = hashOrPath;
-  }
-
-  const nav = document.querySelector(".nav");
-  const navToggle = document.querySelector(".nav-toggle");
-
-  if (navToggle && nav) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("is-open");
-      navToggle.classList.toggle("is-open", isOpen);
-      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-  }
-
-  // attach nav events
-  document.querySelectorAll(".nav a").forEach((a) => {
-    a.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = a.getAttribute("href");
-      navigateTo(href);
-      if (nav && nav.classList.contains("is-open")) {
-        nav.classList.remove("is-open");
-        if (navToggle) {
-          navToggle.classList.remove("is-open");
-          navToggle.setAttribute("aria-expanded", "false");
+  
+  // Apply theme
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update icon (if needed)
+    if (themeToggle) {
+      const icon = themeToggle.querySelector('.theme-icon');
+      if (icon) {
+        if (theme === 'dark') {
+          // Show sun icon for switching to light
+          icon.innerHTML = `
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          `;
+        } else {
+          // Show moon icon for switching to dark
+          icon.innerHTML = `
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          `;
         }
       }
-    });
-  });
-
-  /* ----- Page enter animations (apply on load) ----- */
-  function pageEnter() {
-    // find main .page and run enter animation
-    const page = document.querySelector(".page");
-    if (!page) return;
-    page.classList.add("enter-from-right");
-    requestAnimationFrame(() => {
-      page.classList.add("enter-in");
-      page.style.opacity = 1;
-    });
-    // clear after a bit
-    setTimeout(() => page.classList.remove("enter-from-right"), 700);
+    }
   }
-  document.addEventListener("DOMContentLoaded", pageEnter);
+  
+  // Initialize theme
+  const initialTheme = getInitialTheme();
+  applyTheme(initialTheme);
+  
+  // Toggle theme on button click
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+  }
 
-  /* ----- Typewriter for hero title (if present) ----- */
-  const heroTitle = document.getElementById("hero-type");
-  if (heroTitle) {
-    const lines = ["➜ whoami", "Yash Sharma — Backend & Web3 Engineer"];
-    let li = 0,
-      ci = 0;
-    function typeLoop() {
-      const text = lines[li];
-      if (ci <= text.length) {
-        heroTitle.textContent = text.slice(0, ci);
-        ci++;
-        setTimeout(typeLoop, 28);
+  /* --------------------------------------------------------------------------
+     MOBILE MENU TOGGLE
+     -------------------------------------------------------------------------- */
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isActive = menuToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isActive);
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    
+    // Close menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     HEADER SCROLL EFFECT
+     -------------------------------------------------------------------------- */
+  const header = document.querySelector('.header');
+  let lastScrollTop = 0;
+  
+  function handleScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (header) {
+      if (scrollTop > 50) {
+        header.classList.add('scrolled');
       } else {
-        setTimeout(() => {
-          ci = 0;
-          li = (li + 1) % lines.length;
-          setTimeout(typeLoop, 800);
-        }, 1200);
+        header.classList.remove('scrolled');
       }
     }
-    typeLoop();
+    
+    lastScrollTop = scrollTop;
   }
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
 
-  /* ----- Reveal on scroll ----- */
-  const revealEls = document.querySelectorAll(
-    ".card, .page, .hero, .metric, .profile-card, .project-card, .h2"
-  );
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting) en.target.classList.add("visible");
-      });
-    },
-    { threshold: 0.12 }
-  );
-  revealEls.forEach((el) => io.observe(el));
-
-  /* ----- Project modal handler ----- */
-  const modalBackdrop = document.createElement("div");
-  modalBackdrop.className = "modal-backdrop";
-  modalBackdrop.innerHTML = `<div class="modal highlight-modal" role="dialog" aria-modal="true">
-    <button id="modal-close" class="modal-close" aria-label="Close project dialog">✕</button>
-    <div class="modal-head">
-      <strong id="modal-title">Project</strong>
-      <p id="modal-summary" class="modal-summary muted"></p>
-    </div>
-    <div class="modal-meta">
-      <div>
-        <h4>Features</h4>
-        <ul id="modal-features" class="modal-list"></ul>
-      </div>
-      <div>
-        <h4>Skills used</h4>
-        <div id="modal-skills" class="modal-tags"></div>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <a id="modal-internal" href="#" class="btn">Full project page</a>
-      <a id="modal-repo" href="#" target="_blank" rel="noreferrer" class="project-btn">
-        <i class="si si-github"></i> Source Code
-      </a>
-    </div>
-  </div>`;
-  document.body.appendChild(modalBackdrop);
-
-  const modalTitle = modalBackdrop.querySelector("#modal-title");
-  const modalSummary = modalBackdrop.querySelector("#modal-summary");
-  const modalFeatures = modalBackdrop.querySelector("#modal-features");
-  const modalSkills = modalBackdrop.querySelector("#modal-skills");
-  const modalInternal = modalBackdrop.querySelector("#modal-internal");
-  const modalRepo = modalBackdrop.querySelector("#modal-repo");
-
-  const highlightBackdrop = document.createElement("div");
-  highlightBackdrop.className = "modal-backdrop";
-  highlightBackdrop.innerHTML = `
-  <div class="modal highlight-modal" role="dialog" aria-modal="true">
-    <button id="highlight-close" class="modal-close" aria-label="Close highlight dialog">✕</button>
-    <div class="modal-head">
-      <strong id="highlight-title">Highlight</strong>
-    </div>
-
-    <div>
-      <h4>Details</h4>
-      <ul id="highlight-list" class="modal-list"></ul>
-    </div>
-  </div>`;
-  document.body.appendChild(highlightBackdrop);
-
-  const highlightTitle = highlightBackdrop.querySelector("#highlight-title");
-  const highlightList = highlightBackdrop.querySelector("#highlight-list");
-
-
-  const populateList = (listEl, items) => {
-    listEl.innerHTML = "";
-    if (!items || !items.length) {
-      const li = document.createElement("li");
-      li.textContent = "Details coming soon.";
-      li.className = "muted";
-      listEl.appendChild(li);
-      return;
-    }
-    items.forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item;
-      listEl.appendChild(li);
+  /* --------------------------------------------------------------------------
+     ACTIVE NAV LINK HIGHLIGHTING
+     -------------------------------------------------------------------------- */
+  function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute('href');
+      if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
-  };
-
-  const populateSkills = (wrapper, skills) => {
-    wrapper.innerHTML = "";
-    if (!skills || !skills.length) {
-      const span = document.createElement("span");
-      span.className = "muted";
-      span.textContent = "Skills list coming soon.";
-      wrapper.appendChild(span);
-      return;
-    }
-    skills.forEach((skill) => {
-      const tag = document.createElement("span");
-      tag.className = "tag";
-      tag.textContent = skill;
-      wrapper.appendChild(tag);
-    });
-  };
-
-  function openProjectModal(projectId, cardEl) {
-    const detail = PROJECT_DETAILS[projectId];
-    if (!detail) return;
-
-    modalTitle.textContent = detail.title || cardEl.querySelector("h3")?.textContent || "Project";
-    modalSummary.textContent =
-      detail.summary || cardEl.querySelector("p")?.textContent || "More info coming soon.";
-    populateList(modalFeatures, detail.features);
-    populateSkills(modalSkills, detail.skills);
-
-    if (detail.internal) {
-      modalInternal.href = detail.internal;
-      modalInternal.style.display = "inline-flex";
-    } else {
-      modalInternal.style.display = "none";
-    }
-
-    const repoLink = detail.repo || cardEl.dataset.repo || "#";
-    if (repoLink === "#") {
-      modalRepo.style.display = "none";
-    } else {
-      modalRepo.style.display = "inline-flex";
-      modalRepo.href = repoLink;
-    }
-
-    modalBackdrop.classList.add("open");
   }
+  
+  setActiveNavLink();
 
-  document.addEventListener("click", (e) => {
-    const card = e.target.closest(".project-card");
-    if (card && card.dataset.projectId) {
+  /* --------------------------------------------------------------------------
+     SMOOTH SCROLL FOR ANCHOR LINKS
+     -------------------------------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      
       e.preventDefault();
-      openProjectModal(card.dataset.projectId, card);
-    }
-    if (e.target.id === "modal-close" || e.target === modalBackdrop) {
-      modalBackdrop.classList.remove("open");
-    }
+      const target = document.querySelector(href);
+      
+      if (target) {
+        const headerHeight = header ? header.offsetHeight : 0;
+        const targetPosition = target.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
 
-
-  function openHighlightModal(id) {
-    const detail = HIGHLIGHT_DETAILS[id];
-    if (!detail) return;
-
-    highlightTitle.textContent = detail.title;
-    highlightList.innerHTML = "";
-
-    detail.details.forEach((d) => {
-      const li = document.createElement("li");
-      li.textContent = d;
-      highlightList.appendChild(li);
+  /* --------------------------------------------------------------------------
+     INTERSECTION OBSERVER FOR FADE-IN ANIMATIONS
+     -------------------------------------------------------------------------- */
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        observer.unobserve(entry.target);
+      }
     });
-
-    highlightBackdrop.classList.add("open");
-  }
-
-document.addEventListener("click", (e) => {
-  const highlight = e.target.closest(".highlight-card");
-  if (highlight && highlight.dataset.highlightId) {
-    e.preventDefault();
-    openHighlightModal(highlight.dataset.highlightId);
-  }
-
-  if (e.target.id === "highlight-close" || e.target === highlightBackdrop) {
-    highlightBackdrop.classList.remove("open");
-  }
-});
-
-  /* ----- CV embed fallback handling (object element) ----- */
-  // nothing special needed; anchor download handles it
-
-  /* ----- small accessibility: escape closes modal ----- */
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      modalBackdrop.classList.remove("open");
-      highlightBackdrop.classList.remove("open");
-    }
+  }, observerOptions);
+  
+  // Observe cards and sections
+  document.querySelectorAll('.card, .section-header, .timeline-item, .skill-item').forEach(el => {
+    el.style.opacity = '0';
+    observer.observe(el);
   });
 
-
-  /* ----- Profile tilt interaction (home page only) ----- */
-  function initProfileTilt() {
-    const tiltContainer = document.querySelector(".profile-tilt");
-    const profileImg = tiltContainer && tiltContainer.querySelector(".profile-img");
-    if (!tiltContainer || !profileImg) return;
-
-    tiltContainer.addEventListener("mousemove", (e) => {
-      const rect = tiltContainer.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotateY = (x / rect.width - 0.5) * 20;
-      const rotateX = (y / rect.height - 0.5) * -20;
-      profileImg.style.transform = `
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale(1.05)
-      `;
-    });
-
-    tiltContainer.addEventListener("mouseleave", () => {
-      profileImg.style.transform = `
-        rotateX(0deg)
-        rotateY(0deg)
-        scale(1)
-      `;
-    });
-  }
-
-  /* ----- Project sliders (project detail pages) ----- */
+  /* --------------------------------------------------------------------------
+     PROJECT SLIDER (For individual project pages)
+     -------------------------------------------------------------------------- */
   const sliderState = {}; // store slider states globally for modal access
   
   function initProjectSliders() {
@@ -539,7 +250,9 @@ document.addEventListener("click", (e) => {
     });
   }
 
-  /* ----- Image Modal (on-click popup for gallery images) ----- */
+  /* --------------------------------------------------------------------------
+     IMAGE MODAL (For project galleries)
+     -------------------------------------------------------------------------- */
   function initImageModal() {
     const modal = document.getElementById("image-modal");
     if (!modal) return; // modal not present on this page
@@ -556,7 +269,6 @@ document.addEventListener("click", (e) => {
 
     sliders.forEach((slider, sliderIdx) => {
       const slides = Array.from(slider.querySelectorAll(".project-slide"));
-      const startIdx = items.length;
       slides.forEach((slide) => {
         items.push(slide);
         sliderMap[items.length - 1] = sliderIdx;
@@ -566,7 +278,6 @@ document.addEventListener("click", (e) => {
     if (items.length === 0) return; // no images to show
 
     let currentIndex = 0;
-    let currentSliderIdx = -1;
 
     function showAt(index) {
       currentIndex = (index + items.length) % items.length;
@@ -594,7 +305,6 @@ document.addEventListener("click", (e) => {
     function openModal(index) {
       stopSliderAutoplay();
       showAt(index);
-      currentSliderIdx = sliderMap[index];
       modal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       nextBtn.focus();
@@ -613,16 +323,13 @@ document.addEventListener("click", (e) => {
     });
 
     // nav handlers
-    prevBtn.addEventListener("click", () => {
-      showAt(currentIndex - 1);
-    });
-    nextBtn.addEventListener("click", () => {
-      showAt(currentIndex + 1);
-    });
+    if (prevBtn) prevBtn.addEventListener("click", () => showAt(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => showAt(currentIndex + 1));
 
     // close handlers
     closeButtons.forEach((btn) => btn.addEventListener("click", closeModal));
-    modal.querySelector(".image-modal__backdrop").addEventListener("click", closeModal);
+    const backdrop = modal.querySelector(".image-modal__backdrop");
+    if (backdrop) backdrop.addEventListener("click", closeModal);
 
     // keyboard support
     document.addEventListener("keydown", (e) => {
@@ -643,14 +350,35 @@ document.addEventListener("click", (e) => {
     });
   }
 
-  initProfileTilt();
-  initProjectSliders();
-  initImageModal();
-  initCopyChips();
+  /* --------------------------------------------------------------------------
+     PROFILE CARD TILT EFFECT (if exists)
+     -------------------------------------------------------------------------- */
+  function initProfileTilt() {
+    const profileCard = document.querySelector('.profile-tilt');
+    if (!profileCard) return;
 
+    profileCard.addEventListener('mousemove', (e) => {
+      const rect = profileCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 10;
+      const rotateY = (centerX - x) / 10;
+
+      profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
+
+    profileCard.addEventListener('mouseleave', () => {
+      profileCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+  }
+
+  /* --------------------------------------------------------------------------
+     COPY TO CLIPBOARD (for contact/CV pages)
+     -------------------------------------------------------------------------- */
   function initCopyChips() {
     const buttons = document.querySelectorAll(".copy-chip");
-
     if (!buttons.length) return;
 
     buttons.forEach((button) => {
@@ -708,35 +436,17 @@ document.addEventListener("click", (e) => {
       }, 1600);
     }
   }
+
+  /* --------------------------------------------------------------------------
+     INITIALIZE ALL FUNCTIONS
+     -------------------------------------------------------------------------- */
+  initProfileTilt();
+  initProjectSliders();
+  initImageModal();
+  initCopyChips();
+
+  // Log initialization
+  console.log('%c Portfolio Loaded! ', 'background: #00d9ff; color: #0a0d14; padding: 4px 8px; border-radius: 4px; font-weight: bold;');
+  console.log('Theme:', html.getAttribute('data-theme'));
+
 })();
-
-
-const HIGHLIGHT_DETAILS = {
-  systems: {
-    title: "Systems Design",
-    details: [
-      "Designing partitioned, replayable data pipelines",
-      "Ensuring correctness-first compute flows",
-      "Low-latency API architecture (~120ms P95)",
-      "Backpressure control & event ordering guarantees",
-    ],
-  },
-  observability: {
-    title: "Observability",
-    details: [
-      "Prometheus + Grafana dashboards",
-      "p95 latency tracking and tuning",
-      "Runbook-driven on-call operations",
-      "Alerting + SLO-based monitoring",
-    ],
-  },
-  onchain: {
-    title: "On-chain Engineering",
-    details: [
-      "Uniswap V4 log decoding pipeline",
-      "Multi-chain RPC listener orchestration",
-      "Handling node-level rate limits & retries",
-      "Address/Pool tracking with dedup logic",
-    ],
-  },
-};
