@@ -7,6 +7,47 @@
   'use strict';
 
   /* --------------------------------------------------------------------------
+     CIRCULAR FAVICON GENERATOR
+     -------------------------------------------------------------------------- */
+  function setCircularFavicon() {
+    const faviconLink = document.querySelector('link[rel="icon"]');
+    if (!faviconLink) return;
+    
+    const imgSrc = faviconLink.href;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const size = 128;
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      
+      // Create circular clip
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      
+      // Draw image
+      ctx.drawImage(img, 0, 0, size, size);
+      
+      // Update favicon
+      faviconLink.href = canvas.toDataURL('image/png');
+    };
+    
+    img.src = imgSrc;
+  }
+  
+  // Set circular favicon on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setCircularFavicon);
+  } else {
+    setCircularFavicon();
+  }
+
+  /* --------------------------------------------------------------------------
      THEME TOGGLE - Dark/Light Mode with localStorage
      -------------------------------------------------------------------------- */
   const themeToggle = document.querySelector('.theme-toggle');
