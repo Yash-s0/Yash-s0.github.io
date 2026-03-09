@@ -1,232 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binance 24h Crypto Tracker — Yash Sharma</title>
+  <title>Binance 24h Crypto Tracker -- Yash Sharma</title>
   <meta name="description" content="Real-time cryptocurrency tracker using Binance API">
   <link rel="icon" type="image/jpeg" href="../img/yash.jpg">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#00d9ff',
-            secondary: '#0099ff'
-          }
-        }
-      }
-    }
-  </script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
-  <!-- Header Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-800" style="backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="../index.html" class="flex items-center space-x-2 text-xl font-bold hover:opacity-80 transition-opacity">
-          <span>Yash</span>
-          <span class="text-primary">Sharma</span>
-        </a>
-        
-        <nav class="hidden md:flex items-center space-x-1">
-          <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
-          <a href="../projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
-          <a href="../about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
-          <a href="../experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
-          <a href="../contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
-          <a href="../cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
-        </nav>
-        
-        <div class="flex items-center space-x-2">
-          <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
-            <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
-          
-          <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-      
-      <nav id="mobileMenu" class="hidden md:hidden py-4 border-t border-gray-200 dark:border-gray-800">
-        <div class="flex flex-col space-y-2">
-          <a href="../index.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Home</a>
-          <a href="../projects.html" class="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium">Projects</a>
-          <a href="../about.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">About</a>
-          <a href="../experience.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Experience</a>
-          <a href="../contact.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">Contact</a>
-          <a href="../cv.html" class="px-4 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">CV</a>
-        </div>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">Yash<span class="logo-accent">Sharma</span></a>
+      <nav class="nav-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="../projects.html" class="nav-link active">Projects</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../experience.html" class="nav-link">Experience</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+        <a href="../cv.html" class="nav-link">CV</a>
       </nav>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg id="sunIcon" class="theme-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg id="moonIcon" class="theme-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
     </div>
+    <nav id="mobileMenu" class="mobile-nav">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="../projects.html" class="nav-link active">Projects</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="../experience.html" class="nav-link">Experience</a>
+      <a href="../contact.html" class="nav-link">Contact</a>
+      <a href="../cv.html" class="nav-link">CV</a>
+    </nav>
   </header>
 
-  <!-- Project Content -->
-  <section class="pt-28 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Binance 24h Crypto Tracker</h1>
-        <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed mb-6">
-          Real-time cryptocurrency tracker using Binance API. Displays price, 24h high/low,
-          and updates live through a lightweight Flask backend.
+  <main class="section section-padding" style="padding-top: calc(var(--header-height) + 3rem);">
+    <div class="container">
+      <a href="../projects.html" class="back-link" data-animate="fade-up">&larr; Back to Projects</a>
+
+      <div class="project-hero" data-animate="fade-up" data-delay="100">
+        <h1 class="section-title">Binance 24h Crypto Tracker</h1>
+        <p class="section-description">
+          Real-time cryptocurrency tracker using Binance API. Displays price, 24h high/low, and updates live
+          through a lightweight Flask backend.
         </p>
-
-        <div class="mb-6">
-          <span class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 block">Skills Used</span>
-          <div class="flex flex-wrap gap-2 justify-center">
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Python</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Flask</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Binance API</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">JavaScript</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">HTML</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">CSS</span>
-            <span class="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">Git</span>
-          </div>
+        <div class="tag-list">
+          <span class="tag">Python</span>
+          <span class="tag">Flask</span>
+          <span class="tag">Binance API</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Git</span>
         </div>
-
-        <div class="flex flex-wrap gap-4 justify-center">
-          <a href="https://github.com/Yash-s0/binance" target="_blank" class="inline-flex items-center px-6 py-3 rounded-xl font-semibold bg-primary text-white hover:bg-secondary transition-all duration-200 hover:scale-105 shadow-lg">
-            <i class="si si-github mr-2"></i> Source Code
+        <div class="project-actions">
+          <a href="https://github.com/Yash-s0/binance" target="_blank" class="project-btn btn-magnetic">
+            <i class="si si-github"></i> Source Code
           </a>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <h3 class="text-2xl font-bold mb-4">Features</h3>
-          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Live real-time updates using Binance API</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Displays 24h high, low and volume</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Lightweight polling using Flask backend</span>
-            </li>
-            <li class="flex items-start">
-              <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Clean and responsive UI</span>
-            </li>
+      <hr class="section-line">
+
+      <div class="project-split" data-animate="fade-up" data-delay="200">
+        <div class="card">
+          <h3 class="card-title">Features</h3>
+          <ul class="features-list">
+            <li>Live real-time updates using Binance API</li>
+            <li>Displays 24h high, low and volume</li>
+            <li>Lightweight polling using Flask backend</li>
+            <li>Clean and responsive UI</li>
           </ul>
         </div>
-
-        <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700">
-          <h3 class="text-2xl font-bold mb-4">How it works</h3>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            The Flask backend polls Binance public endpoints every few seconds (rate-limited).
-            It stores minimal snapshot values and serves lightweight JSON for fast client
-            rendering. The frontend updates prices using fetch/WebSocket without reload.
+        <div class="card">
+          <h3 class="card-title">How It Works</h3>
+          <p class="text-secondary">
+            The Flask backend polls Binance public endpoints every few seconds (rate-limited). It stores minimal
+            snapshot values and serves lightweight JSON for fast client rendering. The frontend updates prices
+            using fetch/WebSocket without reload.
           </p>
         </div>
       </div>
 
-      <div class="border-t border-gray-200 dark:border-gray-800 my-12"></div>
+      <hr class="section-line">
 
-      <div class="max-w-5xl mx-auto">
-        <h3 class="text-2xl font-bold mb-6 text-center">Gallery</h3>
-        <div class="project-slider">
-          <img class="project-slide active" src="../assets/projects/binance/1.jpg" alt="Binance Screenshot 1">
-          <img class="project-slide" src="../assets/projects/binance/2.jpg" alt="Binance Screenshot 2">
-          <img class="project-slide" src="../assets/projects/binance/3.jpg" alt="Binance Screenshot 3">
-
-          <button class="slider-btn slider-prev">&#10094;</button>
-          <button class="slider-btn slider-next">&#10095;</button>
+      <div class="project-gallery" data-animate="fade-up" data-delay="300">
+        <h2 class="gallery-title">Screenshots</h2>
+        <div class="project-slider" id="projectSlider">
+          <img class="project-slide active" src="../assets/projects/binance/1.jpg" alt="Binance Tracker screenshot 1">
+          <img class="project-slide" src="../assets/projects/binance/2.jpg" alt="Binance Tracker screenshot 2">
+          <img class="project-slide" src="../assets/projects/binance/3.jpg" alt="Binance Tracker screenshot 3">
+          <button class="slider-btn slider-prev" aria-label="Previous slide">&#10094;</button>
+          <button class="slider-btn slider-next" aria-label="Next slide">&#10095;</button>
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <div id="image-modal" class="image-modal" aria-hidden="true">
-    <div class="image-modal__backdrop" data-action="close"></div>
-    <div class="image-modal__content" role="dialog" aria-modal="true">
-      <button class="image-modal__close" data-action="close" aria-label="Close">×</button>
-      <button class="image-modal__nav prev" data-action="prev" aria-label="Previous">‹</button>
+  <div id="image-modal" class="image-modal" aria-hidden="true" role="dialog">
+    <div class="image-modal__backdrop"></div>
+    <div class="image-modal__content">
+      <button class="slider-btn slider-prev" aria-label="Previous image">&#10094;</button>
       <div class="image-modal__frame">
-        <img src="" alt="" class="image-modal__img">
+        <img class="image-modal__img" src="" alt="Full-size screenshot">
       </div>
-      <button class="image-modal__nav next" data-action="next" aria-label="Next">›</button>
+      <button class="slider-btn slider-next" aria-label="Next image">&#10095;</button>
     </div>
+    <button class="image-modal__close" aria-label="Close modal">&times;</button>
   </div>
 
-  <!-- Footer -->
-  <footer class="py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col items-center gap-6">
-        <div class="flex items-center gap-6">
-          <a href="https://github.com/Yash-s0" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" aria-label="GitHub">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://github.com/Yash-s0" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           </a>
-          <a href="https://linkedin.com/in/yash-ssharma" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" aria-label="LinkedIn">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <a href="https://linkedin.com/in/yash-ssharma" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           </a>
-          <a href="mailto:yash.ssharma@outlook.com" class="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors duration-200" aria-label="Email">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <a href="mailto:yash.ssharma@outlook.com" class="social-link" aria-label="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
         </div>
-        <p class="text-gray-600 dark:text-gray-400 text-sm">&copy; 2026 Yash Sharma. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Yash Sharma. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    const initTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      const theme = savedTheme || systemTheme;
-      if (theme === 'dark') {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-    };
-    themeToggle?.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', newTheme);
-    });
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileMenuBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    initTheme();
-  </script>
   <script src="../script.js"></script>
 </body>
 </html>
