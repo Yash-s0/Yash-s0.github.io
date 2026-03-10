@@ -55,7 +55,7 @@
         </p>
         <div class="tag-list">
           <span class="tag">Python</span>
-          <span class="tag">Flask</span>
+          <span class="tag">FastAPI</span>
           <span class="tag">SQLAlchemy</span>
           <span class="tag">JWT</span>
           <span class="tag">JavaScript</span>
@@ -65,10 +65,10 @@
           <span class="tag">passlib</span>
         </div>
         <div class="project-actions">
-          <a href="https://github.com/Yash-s0/url_shortner" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://github.com/Yash-s0/url_shortner" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <i class="si si-github"></i> Backend Code
           </a>
-          <a href="https://github.com/Yash-s0/url_shortner_frontend" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://github.com/Yash-s0/url_shortner_frontend" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <i class="si si-github"></i> Frontend Code
           </a>
         </div>
@@ -78,21 +78,43 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Needed a secure, full-stack URL shortener with user accounts and history.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Keep the API fast and maintainable while supporting authentication and a custom UI.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            FastAPI provides JWT-secured endpoints for auth and URL creation. SQLAlchemy stores short/long mappings
+            plus user history. The frontend consumes the API with authenticated calls.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>User registration &amp; login (JWT)</li>
-            <li>Stores all URLs + user search history</li>
-            <li>FastAPI backend + SQLAlchemy ORM storage</li>
-            <li>Full custom frontend UI built from scratch</li>
+            <li>Designed the API surface and auth flow.</li>
+            <li>Built persistence with SQLAlchemy.</li>
+            <li>Implemented the custom frontend UI.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            FastAPI provides secure endpoints for registering users, logging in, and shortening URLs. SQLAlchemy
-            stores the mapping of long &rarr; short URLs and user history. The frontend communicates with the
-            backend via JWT-authenticated API calls.
+            Impact not formally measured yet. The project demonstrates secure full-stack API design.
           </p>
+          <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">SQLAlchemy</span>
+            <span class="tag">JWT</span>
+          </div>
         </div>
       </div>
 

@@ -91,23 +91,45 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Large Python codebases accumulate dead code and unused imports, making refactors risky and review cycles slow.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Needed a single-file report that works locally without a server and avoids false positives across modules.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            Walks the project tree, parses each <code>.py</code> file into an AST, and builds a call graph to map
+            definitions to references. Unreachable blocks (post-<code>return</code>/<code>raise</code>) are classified
+            separately and rendered into a self-contained HTML report via Jinja2.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>Detects unused imports, functions/classes, variables, and unreachable code across a Python project.</li>
-            <li>Builds a project-wide call graph to avoid false positives on cross-module usage.</li>
-            <li>Computes a single "health score" summarizing dead-code density.</li>
-            <li>Outputs a responsive, keyboard-friendly HTML report with search and collapsible sections.</li>
+            <li>Designed AST parsing flow and project-wide symbol tracking.</li>
+            <li>Implemented call graph linking to reduce cross-module false positives.</li>
+            <li>Shipped the HTML report layout and search/collapse UX.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            PyDeadCode recursively walks a target directory, parses each <code>.py</code> file into an AST,
-            and tracks definitions, imports, and references. It then builds a call graph to understand which
-            symbols are truly unused, classifies unreachable segments (e.g., after <code>return</code> or
-            <code>raise</code>), and renders the aggregated findings into a single-page HTML report using a
-            bundled Jinja2 template.
+            Impact not formally measured yet. The tool provides a repeatable audit workflow for cleanup and refactors.
           </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">AST</span>
+            <span class="tag">Jinja2</span>
+            <span class="tag">CLI</span>
+          </div>
         </div>
       </div>
 

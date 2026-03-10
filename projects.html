@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects — Yash Sharma</title>
   <meta name="description" content="Portfolio of backend, Web3, and static analysis projects">
+  <meta property="og:title" content="Projects — Yash Sharma">
+  <meta property="og:description" content="Portfolio of backend, Web3, and static analysis projects">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yash-s0.github.io/projects.html">
+  <meta property="og:image" content="https://yash-s0.github.io/img/yash.jpg">
+  <link rel="canonical" href="https://yash-s0.github.io/projects.html">
   <link rel="icon" type="image/jpeg" href="img/yash.jpg">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div id="page-loader" class="page-loader">
     <div class="loader-bg-grid"></div>
     <div class="loader-panel">
@@ -37,6 +44,7 @@
         <div class="loader-line"><span class="syntax-comment"># Establishing secure channel...</span></div>
         <div class="loader-line loader-success"><span class="syntax-success">&gt;&gt;&gt; Portfolio ready. Welcome.</span></div>
       </div>
+      <button class="loader-skip" type="button">Skip intro</button>
     </div>
     <div class="loader-progress"></div>
   </div>
@@ -91,14 +99,15 @@
     </div>
   </header>
 
+  <main id="main-content">
   <section class="hero-section">
     <div class="hero-content">
       <div class="section-header" data-animate="fade-up">
         <span class="section-label">Portfolio</span>
         <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">All Projects</h1>
         <p class="section-description">
-          A comprehensive collection of my work spanning backend development, static analysis tools, 
-          Web3 applications, and frontend projects. Click on any card to view detailed information.
+          Curated case studies first, followed by supporting projects. Each card highlights the problem, approach,
+          and outcome.
         </p>
       </div>
     </div>
@@ -106,135 +115,160 @@
 
   <section class="section section-padding">
     <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-label">Featured</span>
+        <h2 class="section-title">Case Studies</h2>
+        <p class="section-description">High-signal projects with clear problem, solution, and impact framing.</p>
+      </div>
       <div class="projects-grid">
-        <a href="projects/deadcode.html" class="project-card tilt-card" data-animate="fade-up" data-delay="0">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="0">
+          <div class="project-card-image">
+            <img src="assets/projects/deadcode/1.jpg" alt="PyDeadCode report overview screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">PyDeadCode</h3>
-            <p class="project-card-desc">Dead Code Detector — Static analysis tool that finds unused imports, functions, variables, and unreachable code with a polished HTML report.</p>
+            <p class="project-card-desc">Problem: risky refactors. Solution: static analysis + single-page report. Impact: faster, safer cleanup workflows.</p>
+            <div class="project-card-meta">Open source • Dec 2025 • CLI + HTML report</div>
             <div class="tag-list">
               <span class="tag">Python</span>
-              <span class="tag">Static Analysis</span>
               <span class="tag">AST</span>
-              <span class="tag">Jinja2</span>
+              <span class="tag">Static Analysis</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="projects/deadcode.html" class="project-chip">Case Study</a>
+              <a href="https://github.com/Yash-s0/py-deadcode-finder" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
             </div>
           </div>
-        </a>
-        <a href="projects/duplicate.html" class="project-card tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-            </svg>
+        </div>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="100">
+          <div class="project-card-image">
+            <img src="assets/projects/duplicate/1.jpg" alt="PyDuplicate report overview screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">PyDuplicate</h3>
-            <p class="project-card-desc">Duplicate & Complexity Analyzer — Highlights duplicated code, complex functions, and near-duplicate assets via an interactive HTML dashboard.</p>
+            <p class="project-card-desc">Problem: hidden duplication and complexity. Solution: MinHash + complexity scoring. Impact: targeted refactors.</p>
+            <div class="project-card-meta">Open source • Dec 2025 • Interactive report</div>
             <div class="tag-list">
               <span class="tag">Python</span>
               <span class="tag">Radon</span>
               <span class="tag">Datasketch</span>
-              <span class="tag">Jinja2</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="projects/duplicate.html" class="project-chip">Case Study</a>
+              <a href="https://github.com/Yash-s0/py-duplicate-finder" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
             </div>
           </div>
-        </a>
-        <a href="projects/binance.html" class="project-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <line x1="12" y1="1" x2="12" y2="23"></line>
-              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
+        </div>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="200">
+          <div class="project-card-image">
+            <img src="assets/projects/binance/1.jpg" alt="Binance tracker dashboard screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Binance 24h Tracker</h3>
-            <p class="project-card-desc">Real-time cryptocurrency tracker using Binance API with live price updates, 24h high/low stats through Flask backend.</p>
+            <p class="project-card-desc">Problem: fast market snapshot. Solution: Flask API + live price updates. Impact: lightweight dashboard.</p>
+            <div class="project-card-meta">Personal project • Real-time API + UI</div>
             <div class="tag-list">
               <span class="tag">Python</span>
               <span class="tag">Flask</span>
               <span class="tag">Binance API</span>
-              <span class="tag">JavaScript</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="projects/binance.html" class="project-chip">Case Study</a>
+              <a href="https://github.com/Yash-s0/binance" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
             </div>
           </div>
-        </a>
-        <a href="projects/url.html" class="project-card tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-            </svg>
+        </div>
+      </div>
+
+      <div class="section-header" data-animate="fade-up" style="margin-top:3rem;">
+        <span class="section-label">More Projects</span>
+        <h2 class="section-title">Additional Work</h2>
+        <p class="section-description">Supporting projects and frontend experiments.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="0">
+          <div class="project-card-image">
+            <img src="assets/projects/url/1.jpg" alt="URL Shortener screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">URL Shortener</h3>
-            <p class="project-card-desc">Full-stack URL shortening platform with JWT authentication, SQLAlchemy persistence, and custom frontend.</p>
+            <p class="project-card-desc">Problem: clean link management. Solution: FastAPI + JWT auth. Impact: full-stack URL platform.</p>
+            <div class="project-card-meta">Personal project • FastAPI + SQLAlchemy</div>
             <div class="tag-list">
-              <span class="tag">Python</span>
               <span class="tag">FastAPI</span>
               <span class="tag">SQLAlchemy</span>
               <span class="tag">JWT</span>
             </div>
+            <div class="project-card-actions">
+              <a href="projects/url.html" class="project-chip">Case Study</a>
+              <a href="https://github.com/Yash-s0/url_shortner" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
+              <a href="https://github.com/Yash-s0/url_shortner_frontend" target="_blank" rel="noopener noreferrer" class="project-chip">Frontend</a>
+            </div>
           </div>
-        </a>
-        <a href="projects/contacts.html" class="project-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
+        </div>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="100">
+          <div class="project-card-image">
+            <img src="assets/projects/contacts/1.jpg" alt="Contacts API screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Contacts API</h3>
-            <p class="project-card-desc">FastAPI-based contacts management system with full CRUD operations and JSON file persistence.</p>
+            <p class="project-card-desc">Problem: simple address storage. Solution: FastAPI CRUD. Impact: clean, testable REST API.</p>
+            <div class="project-card-meta">Personal project • CRUD service</div>
             <div class="tag-list">
-              <span class="tag">Python</span>
               <span class="tag">FastAPI</span>
-              <span class="tag">REST API</span>
+              <span class="tag">REST</span>
+              <span class="tag">Python</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="projects/contacts.html" class="project-chip">Case Study</a>
+              <a href="https://github.com/Yash-s0/contacts_api" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
             </div>
           </div>
-        </a>
-        <a href="projects/rps.html" class="project-card tilt-card" data-animate="fade-up" data-delay="100">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <polygon points="5 3 19 12 5 21 5 3"></polygon>
-            </svg>
+        </div>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="200">
+          <div class="project-card-image">
+            <img src="assets/projects/rps/1.jpg" alt="Rock Paper Scissors game screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Rock Paper Scissors</h3>
-            <p class="project-card-desc">Interactive browser-based game with score tracking, animations, and responsive design.</p>
+            <p class="project-card-desc">Problem: interactive game mechanics. Solution: JS + CSS animations. Impact: responsive browser game.</p>
+            <div class="project-card-meta">Frontend experiment</div>
             <div class="tag-list">
               <span class="tag">JavaScript</span>
               <span class="tag">HTML</span>
               <span class="tag">CSS</span>
             </div>
+            <div class="project-card-actions">
+              <a href="projects/rps.html" class="project-chip">Case Study</a>
+              <a href="https://yash-s0.github.io/rps_web" target="_blank" rel="noopener noreferrer" class="project-chip">Demo</a>
+              <a href="https://github.com/Yash-s0/rps_web" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
+            </div>
           </div>
-        </a>
-        <a href="projects/etch.html" class="project-card tilt-card" data-animate="fade-up" data-delay="200">
-          <div class="project-card-image" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-              <path d="M2 2l7.586 7.586"></path>
-              <circle cx="11" cy="11" r="2"></circle>
-            </svg>
+        </div>
+        <div class="project-card tilt-card" data-animate="fade-up" data-delay="300">
+          <div class="project-card-image">
+            <img src="assets/projects/etch/1.jpg" alt="Etch-A-Sketch screenshot">
           </div>
           <div class="project-card-body">
             <h3 class="project-card-title">Etch-A-Sketch</h3>
-            <p class="project-card-desc">Canvas-based drawing application with color selection, brush sizes, and grid customization.</p>
+            <p class="project-card-desc">Problem: fun drawing UI. Solution: Canvas grid + controls. Impact: responsive sketch tool.</p>
+            <div class="project-card-meta">Frontend experiment</div>
             <div class="tag-list">
+              <span class="tag">Canvas</span>
               <span class="tag">JavaScript</span>
               <span class="tag">HTML</span>
-              <span class="tag">Canvas API</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="projects/etch.html" class="project-chip">Case Study</a>
+              <a href="https://yash-s0.github.io/etch-a-sketch" target="_blank" rel="noopener noreferrer" class="project-chip">Demo</a>
+              <a href="https://github.com/Yash-s0/etch-a-sketch" target="_blank" rel="noopener noreferrer" class="project-chip">Source</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">

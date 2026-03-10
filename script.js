@@ -62,6 +62,13 @@
 
     prepareLines();
 
+    var skipBtn = loader.querySelector('.loader-skip');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function() {
+        showAllLines();
+      });
+    }
+
     if (prefersReduced) {
       showAllLines();
       return;
@@ -309,6 +316,7 @@
 
   function initParticles() {
     if (prefersReducedMotion) return;
+    if (window.innerWidth < 768) return;
 
     document.querySelectorAll('.particle-host').forEach(function(host) {
       var canvas = document.createElement('canvas');
@@ -427,6 +435,7 @@
 
   function initCursorTrail() {
     if (prefersReducedMotion) return;
+    if (window.innerWidth < 768) return;
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
 
     var dots = [];

@@ -91,22 +91,44 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Duplicate code and hidden complexity make maintenance risky and refactors expensive.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Needed a browser-friendly report without external dependencies or a backend service.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            Extracts complexity metrics via <code>radon</code>, builds MinHash signatures with <code>datasketch</code>,
+            and groups candidates through LSH. Results are rendered into a single-page HTML report for quick review.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>Detects function- and file-level duplication across a repository.</li>
-            <li>Computes cyclomatic complexity to highlight risky hotspots.</li>
-            <li>Uses MinHash + Locality Sensitive Hashing to find fuzzy duplicates.</li>
-            <li>Renders all results into a responsive HTML report with collapsible sections and badges.</li>
+            <li>Implemented MinHash + LSH grouping for fuzzy duplicates.</li>
+            <li>Integrated complexity scoring to surface risky hotspots.</li>
+            <li>Designed report UX with collapsible sections and badges.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            PyDuplicate walks the target project, extracts code metrics via <code>radon</code>, and builds MinHash
-            signatures for code and assets using <code>datasketch</code>. Candidate duplicates are grouped via
-            Locality Sensitive Hashing, scored by similarity and complexity, and then rendered using a Jinja2 HTML
-            template so you can explore duplication and hotspots from a browser.
+            Impact not formally measured yet. The report accelerates review cycles by making duplication visible.
           </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Radon</span>
+            <span class="tag">Datasketch</span>
+            <span class="tag">HTML</span>
+          </div>
         </div>
       </div>
 

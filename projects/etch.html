@@ -62,11 +62,11 @@
           <span class="tag">Git</span>
         </div>
         <div class="project-actions">
-          <a href="https://yash-s0.github.io/etch-a-sketch" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://yash-s0.github.io/etch-a-sketch" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             Play Online
           </a>
-          <a href="https://github.com/Yash-s0/etch-a-sketch" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://github.com/Yash-s0/etch-a-sketch" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <i class="si si-github"></i> Source Code
           </a>
         </div>
@@ -76,21 +76,43 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Build a simple, responsive drawing tool using browser-native APIs.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Frontend-only, lightweight, and accessible on mobile.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            Uses Canvas 2D context with pointer events to draw strokes. Tool states (color, size, eraser) update
+            drawing settings without reloads.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>Live drawing using Canvas 2D context</li>
-            <li>Brush size &amp; color selection</li>
-            <li>Eraser tool</li>
-            <li>Clear canvas feature</li>
-            <li>Responsive layout across devices</li>
+            <li>Implemented drawing engine and tool controls.</li>
+            <li>Designed responsive layout and UI.</li>
+            <li>Deployed on GitHub Pages.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            Mouse (or touch) events are captured on the canvas. A 2D context draws lines by tracking pointer movement.
-            Tools like eraser and brush resize dynamically modify the stroke settings. Reset clears the rendering context fully.
+            Impact not formally measured yet. The project demonstrates clean Canvas integration and responsive UI.
           </p>
+          <div class="tags">
+            <span class="tag">Canvas API</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+          </div>
         </div>
       </div>
 

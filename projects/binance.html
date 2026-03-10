@@ -64,7 +64,7 @@
           <span class="tag">Git</span>
         </div>
         <div class="project-actions">
-          <a href="https://github.com/Yash-s0/binance" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://github.com/Yash-s0/binance" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <i class="si si-github"></i> Source Code
           </a>
         </div>
@@ -74,21 +74,43 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Needed a lightweight way to monitor 24h crypto movement without a heavy dashboard.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Keep it fast, simple, and low-cost with minimal backend state.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            Flask backend polls Binance public endpoints with rate limits in mind, serves minimal JSON snapshots,
+            and the frontend updates prices without page reloads for a fast UX.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>Live real-time updates using Binance API</li>
-            <li>Displays 24h high, low and volume</li>
-            <li>Lightweight polling using Flask backend</li>
-            <li>Clean and responsive UI</li>
+            <li>Built the Flask API and polling flow.</li>
+            <li>Implemented the real-time UI updates.</li>
+            <li>Designed a clean, responsive layout.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            The Flask backend polls Binance public endpoints every few seconds (rate-limited). It stores minimal
-            snapshot values and serves lightweight JSON for fast client rendering. The frontend updates prices
-            using fetch/WebSocket without reload.
+            Impact not formally measured yet. The project provides a low-latency market snapshot and a clean demo of API + UI flow.
           </p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Binance API</span>
+          </div>
         </div>
       </div>
 

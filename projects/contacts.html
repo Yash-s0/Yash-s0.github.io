@@ -60,7 +60,7 @@
           <span class="tag">Git</span>
         </div>
         <div class="project-actions">
-          <a href="https://github.com/Yash-s0/contacts_api" target="_blank" class="project-btn btn-magnetic">
+          <a href="https://github.com/Yash-s0/contacts_api" target="_blank" rel="noopener noreferrer" class="project-btn btn-magnetic">
             <i class="si si-github"></i> Source Code
           </a>
         </div>
@@ -70,20 +70,43 @@
 
       <div class="project-split" data-animate="fade-up" data-delay="200">
         <div class="card">
-          <h3 class="card-title">Features</h3>
+          <h3 class="card-title">Problem</h3>
+          <p class="text-secondary">
+            Needed a simple, testable CRUD API to manage contact data.
+          </p>
+          <h3 class="card-title" style="margin-top:1.5rem;">Constraints</h3>
+          <p class="text-secondary">
+            Keep the storage minimal and the API easy to reason about.
+          </p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">Architecture / Decisions</h3>
+          <p class="text-secondary">
+            FastAPI exposes REST endpoints with input validation. For simplicity, persistence uses a JSON file,
+            keeping the data layer transparent and easy to inspect.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-split" data-animate="fade-up" data-delay="250">
+        <div class="card">
+          <h3 class="card-title">My Contribution</h3>
           <ul class="features-list">
-            <li>Create or update contacts</li>
-            <li>Delete stored contacts</li>
-            <li>Search contacts</li>
-            <li>List all contacts</li>
+            <li>Designed the CRUD API and validation flow.</li>
+            <li>Implemented the JSON persistence layer.</li>
+            <li>Documented endpoints for quick testing.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="card-title">How It Works</h3>
+          <h3 class="card-title">Outcome / Impact</h3>
           <p class="text-secondary">
-            FastAPI exposes REST endpoints. For demo simplicity, persistence is a JSON file. Endpoints validate
-            input and persist to disk asynchronously.
+            Impact not formally measured yet. The project provides a clean baseline for CRUD API structure.
           </p>
+          <div class="tags">
+            <span class="tag">FastAPI</span>
+            <span class="tag">JSON</span>
+            <span class="tag">Python</span>
+          </div>
         </div>
       </div>
 
