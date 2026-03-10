@@ -13,6 +13,9 @@
   --accent-secondary: #0099ff;
   --accent-muted: rgba(0, 217, 255, 0.1);
   --accent-glow: rgba(0, 217, 255, 0.3);
+  --portfolio-fade-start: rgba(16, 21, 29, 0);
+  --portfolio-fade-mid: rgba(16, 21, 29, 0.72);
+  --portfolio-fade-end: var(--bg-secondary);
   --text-primary: #e6edf3;
   --text-secondary: #adbac7;
   --text-muted: #768390;
@@ -50,10 +53,14 @@ html:not(.dark) {
   --text-muted: #6b7280;
   --border-color: rgba(0, 0, 0, 0.1);
   --border-hover: rgba(0, 0, 0, 0.2);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.12);
+  --accent-glow: rgba(0, 153, 255, 0.14);
+  --shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 3px 8px -2px rgba(17, 24, 39, 0.1);
+  --shadow-lg: 0 8px 18px -6px rgba(17, 24, 39, 0.14);
+  --shadow-xl: 0 14px 28px -10px rgba(17, 24, 39, 0.18);
+  --portfolio-fade-start: rgba(249, 250, 251, 0);
+  --portfolio-fade-mid: rgba(249, 250, 251, 0.9);
+  --portfolio-fade-end: var(--bg-secondary);
 }
 
 *,
@@ -649,7 +656,7 @@ html:not(.dark) .site-header.scrolled {
 }
 
 .section-padding {
-  padding: 0 2rem;
+  padding-inline: 0;
 }
 
 .portfolio-section {
@@ -658,9 +665,9 @@ html:not(.dark) .site-header.scrolled {
   padding-top: 6.5rem;
   background: linear-gradient(
     to bottom,
-    rgba(16, 21, 29, 0) 0%,
-    rgba(16, 21, 29, 0.72) 30%,
-    var(--bg-secondary) 100%
+    var(--portfolio-fade-start) 0%,
+    var(--portfolio-fade-mid) 30%,
+    var(--portfolio-fade-end) 100%
   );
 }
 
@@ -820,7 +827,8 @@ html:not(.dark) .site-header.scrolled {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
 }
 
@@ -829,6 +837,10 @@ html:not(.dark) .site-header.scrolled {
   box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
   border-color: var(--border-hover);
   color: inherit;
+}
+
+html:not(.dark) .project-card:hover {
+  box-shadow: 0 14px 28px rgba(0, 153, 255, 0.12);
 }
 
 .project-card-image {
@@ -846,6 +858,9 @@ html:not(.dark) .site-header.scrolled {
 
 .project-card-body {
   padding: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .project-card-title {
@@ -908,7 +923,8 @@ html:not(.dark) .site-header.scrolled {
   color: var(--accent-primary);
   font-weight: 500;
   font-size: 0.875rem;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
   text-decoration: none;
 }
 
@@ -920,6 +936,30 @@ html:not(.dark) .site-header.scrolled {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 1rem;
+}
+
+.section-actions {
+  margin-top: 2rem;
+}
+
+.cta-section {
+  background:
+    radial-gradient(circle at top center, rgba(0, 217, 255, 0.12), transparent 55%),
+    linear-gradient(135deg, rgba(0, 217, 255, 0.05), transparent, rgba(0, 153, 255, 0.05));
+}
+
+.cta-panel {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3rem);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+html:not(.dark) .cta-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82));
 }
 
 .skill-item {
@@ -1971,6 +2011,10 @@ html:not(.dark) .site-header.scrolled {
   opacity: 0.12;
 }
 
+html:not(.dark) .hero-blob {
+  opacity: 0.06;
+}
+
 .hero-blob-1 {
   width: 600px;
   height: 600px;
@@ -1997,6 +2041,10 @@ html:not(.dark) .site-header.scrolled {
   opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
+}
+
+html:not(.dark) .noise-overlay {
+  opacity: 0.012;
 }
 
 .page-enter {
@@ -2112,6 +2160,10 @@ html:not(.dark) .site-header.scrolled {
 
   .section {
     padding: 3rem 0;
+  }
+
+  .section-actions {
+    margin-top: 1.5rem;
   }
 
   .section-header {
