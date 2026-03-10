@@ -84,6 +84,22 @@ body.loading {
   overflow: hidden;
 }
 
+.site-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+body.loading .site-content {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+body.is-loaded .site-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   font-weight: 700;
@@ -1656,7 +1672,7 @@ html:not(.dark) .site-header.scrolled {
 
 .page-loader.exit {
   opacity: 0;
-  transform: translateY(-100%);
+  transform: translateY(-24px);
   pointer-events: none;
 }
 
@@ -1664,12 +1680,20 @@ html:not(.dark) .site-header.scrolled {
   display: none;
 }
 
+.loader-panel {
+  width: min(92%, 760px);
+  padding: 2.25rem 2.5rem;
+  border-radius: 16px;
+  background: rgba(11, 16, 24, 0.75);
+  border: 1px solid rgba(0, 217, 255, 0.08);
+  box-shadow: 0 0 35px rgba(0, 217, 255, 0.08), inset 0 0 18px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
 .loader-terminal {
-  width: 90%;
-  max-width: 700px;
   font-family: var(--font-mono);
-  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
-  line-height: 1.8;
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  line-height: 1.75;
   color: #adbac7;
 }
 
@@ -1682,7 +1706,24 @@ html:not(.dark) .site-header.scrolled {
 
 .loader-line {
   opacity: 0;
-  transform: translateX(-10px);
+  transform: translateX(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  min-height: 1.4em;
+}
+
+.loader-line.is-typing,
+.loader-line.is-typed,
+.loader-line.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.loader-line-content {
+  display: inline-block;
+  white-space: pre;
+  overflow: hidden;
+  max-width: 0;
+  vertical-align: top;
 }
 
 .loader-line.visible {
@@ -1698,6 +1739,11 @@ html:not(.dark) .site-header.scrolled {
 .syntax-operator { color: #ff7b72; }
 .syntax-bracket { color: #adbac7; }
 .syntax-success { color: #3fb950; font-weight: 700; }
+
+.loader-success.success-visible .syntax-success {
+  text-shadow: 0 0 12px rgba(63, 185, 80, 0.4);
+  animation: successGlow 0.5s ease forwards;
+}
 
 .loader-progress {
   position: absolute;
@@ -1715,6 +1761,18 @@ html:not(.dark) .site-header.scrolled {
   background-image: linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
+  animation: gridShimmer 8s ease-in-out infinite;
+}
+
+.loader-cursor {
+  display: inline-block;
+  width: 0.65ch;
+  height: 1.1em;
+  margin-left: 0.15ch;
+  background: #3fb950;
+  box-shadow: 0 0 10px rgba(63, 185, 80, 0.45);
+  vertical-align: -0.15em;
+  animation: cursorBlink 0.9s steps(2, start) infinite;
 }
 
 @keyframes loaderFadeIn {
@@ -1725,6 +1783,17 @@ html:not(.dark) .site-header.scrolled {
 @keyframes loaderLineIn {
   from { opacity: 0; transform: translateX(-10px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes gridShimmer {
+  0% { opacity: 0.6; background-position: 0 0, 0 0; }
+  50% { opacity: 0.85; background-position: 20px 10px, 10px 20px; }
+  100% { opacity: 0.6; background-position: 0 0, 0 0; }
+}
+
+@keyframes successGlow {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .particle-canvas {
@@ -1785,6 +1854,22 @@ html:not(.dark) .site-header.scrolled {
 @keyframes cursorBlink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader,
+  .site-content {
+    transition: none;
+  }
+
+  .loader-bg-grid,
+  .loader-cursor {
+    animation: none;
+  }
+
+  .loader-line-content {
+    max-width: none;
+  }
 }
 
 @keyframes gradientShift {

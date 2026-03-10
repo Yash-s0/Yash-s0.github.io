@@ -3,48 +3,143 @@
 
   function initPageLoader() {
     var loader = document.getElementById('page-loader');
-    if (!loader) return;
+    if (!loader) {
+      document.body.classList.add('is-loaded');
+      return;
+    }
+
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (sessionStorage.getItem('loader_shown')) {
       loader.classList.add('hidden');
       document.body.classList.remove('loading');
+      document.body.classList.add('is-loaded');
       return;
     }
 
     document.body.classList.add('loading');
-    var lines = loader.querySelectorAll('.loader-line');
+    var lines = Array.prototype.slice.call(loader.querySelectorAll('.loader-line'));
     var progress = loader.querySelector('.loader-progress');
-    var totalLines = lines.length;
+    var successLine = loader.querySelector('.loader-success');
+    var cursor = document.createElement('span');
+    cursor.className = 'loader-cursor';
+
+    function setProgress(value) {
+      if (progress) progress.style.width = value + '%';
+    }
+
+    function exitLoader(delay) {
+      var exitDelay = typeof delay === 'number' ? delay : 450;
+      setTimeout(function() {
+        loader.classList.add('exit');
+        document.body.classList.remove('loading');
+        document.body.classList.add('is-loaded');
+        sessionStorage.setItem('loader_shown', 'true');
+        setTimeout(function() { loader.classList.add('hidden'); }, 600);
+        if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+      }, exitDelay);
+    }
+
+    function prepareLines() {
+      lines.forEach(function(line) {
+        if (line.querySelector('.loader-line-content')) return;
+        var html = line.innerHTML;
+        line.setAttribute('data-full-html', html);
+        line.innerHTML = '<span class="loader-line-content">' + html + '</span>';
+      });
+    }
+
+    function showAllLines() {
+      lines.forEach(function(line) {
+        line.classList.add('is-typed');
+        var content = line.querySelector('.loader-line-content');
+        if (content) content.style.maxWidth = 'none';
+      });
+      if (successLine) successLine.classList.add('success-visible');
+      setProgress(100);
+      exitLoader(0);
+    }
+
+    prepareLines();
+
+    if (prefersReduced) {
+      showAllLines();
+      return;
+    }
+
+    var totalChars = 0;
+    var totalSteps = 0;
+    var lineLengths = lines.map(function(line) {
+      var text = line.textContent || '';
+      var isBlank = text.replace(/\s/g, '').length === 0;
+      var length = isBlank ? 0 : text.length;
+      totalChars += length;
+      totalSteps += 4;
+      return length;
+    });
+
+    totalSteps += totalChars;
+    var targetDuration = 2000;
+    var lineGap = 40;
+    var blankDelay = 70;
+    var charTime = 18;
+    if (totalChars > 0) {
+      var computed = Math.floor((targetDuration - (lines.length * lineGap)) / totalChars);
+      charTime = Math.max(6, Math.min(16, computed));
+    }
+
+    var typedChars = 0;
     var currentLine = 0;
 
-    var lineDelays = [
-      500, 650, 650, 650, 350,
-      750, 600, 600, 600, 600,
-      350, 700, 550, 350,
-      650, 650, 400, 900
-    ];
+    function updateProgress() {
+      var progressValue = Math.min(100, Math.round(((typedChars + (currentLine * 4)) / totalSteps) * 100));
+      setProgress(progressValue);
+    }
 
-    function revealLine() {
-      if (currentLine >= totalLines) {
-        if (progress) progress.style.width = '100%';
-        setTimeout(exitLoader, 800);
+    function typeNextLine() {
+      if (currentLine >= lines.length) {
+        setProgress(100);
+        exitLoader(450);
         return;
       }
-      lines[currentLine].classList.add('visible');
-      currentLine++;
-      if (progress) progress.style.width = ((currentLine / totalLines) * 100) + '%';
-      var delay = lineDelays[currentLine - 1] || 700;
-      setTimeout(revealLine, delay);
+
+      var line = lines[currentLine];
+      var content = line.querySelector('.loader-line-content');
+      var length = lineLengths[currentLine] || 0;
+      line.classList.add('is-typing');
+      line.appendChild(cursor);
+
+      if (length === 0) {
+        line.classList.add('is-typed');
+        line.classList.remove('is-typing');
+        currentLine++;
+        updateProgress();
+        setTimeout(typeNextLine, blankDelay);
+        return;
+      }
+
+      var reveal = 0;
+      function tick() {
+        reveal += 1;
+        typedChars += 1;
+        if (content) content.style.maxWidth = reveal + 'ch';
+        updateProgress();
+        if (reveal >= length) {
+          line.classList.add('is-typed');
+          line.classList.remove('is-typing');
+          if (line === successLine) {
+            line.classList.add('success-visible');
+          }
+          currentLine++;
+          setTimeout(typeNextLine, line === successLine ? 250 : lineGap);
+          return;
+        }
+        setTimeout(tick, charTime);
+      }
+      tick();
     }
 
-    function exitLoader() {
-      loader.classList.add('exit');
-      document.body.classList.remove('loading');
-      sessionStorage.setItem('loader_shown', 'true');
-      setTimeout(function() { loader.classList.add('hidden'); }, 600);
-    }
-
-    setTimeout(revealLine, 800);
+    setTimeout(typeNextLine, 250);
   }
 
   initPageLoader();

@@ -10,6 +10,38 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v5/font/simple-icons.min.css">
 </head>
 <body>
+  <div id="page-loader" class="page-loader">
+    <div class="loader-bg-grid"></div>
+    <div class="loader-panel">
+      <div class="loader-terminal">
+        <div class="loader-prompt">$ ./load_profile.sh</div>
+        <div class="loader-line"><span class="syntax-comment"># Bootstrapping Yash's Portfolio...</span></div>
+        <div class="loader-line"><span class="syntax-comment"># Importing core toolchain...</span></div>
+        <div class="loader-line"><span class="syntax-keyword">from</span> <span class="syntax-variable">backend</span> <span class="syntax-keyword">import</span> <span class="syntax-func">FastAPI</span>, <span class="syntax-func">Kafka</span>, <span class="syntax-func">PostgreSQL</span></div>
+        <div class="loader-line"><span class="syntax-keyword">from</span> <span class="syntax-variable">web3</span> <span class="syntax-keyword">import</span> <span class="syntax-func">Ethereum</span>, <span class="syntax-func">BSC</span>, <span class="syntax-func">Base</span></div>
+        <div class="loader-line"><span class="syntax-keyword">from</span> <span class="syntax-variable">tools</span> <span class="syntax-keyword">import</span> <span class="syntax-func">Docker</span>, <span class="syntax-func">Redis</span>, <span class="syntax-func">Linux</span></div>
+        <div class="loader-line">&nbsp;</div>
+        <div class="loader-line"><span class="syntax-comment"># Initializing engineer profile...</span></div>
+        <div class="loader-line"><span class="syntax-keyword">class</span> <span class="syntax-class">YashSharma</span><span class="syntax-bracket">(</span><span class="syntax-func">Engineer</span><span class="syntax-bracket">)</span><span class="syntax-operator">:</span></div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-variable">role</span> <span class="syntax-operator">=</span> <span class="syntax-string">"Backend &amp; Web3 Engineer"</span></div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-variable">stack</span> <span class="syntax-operator">=</span> <span class="syntax-bracket">[</span><span class="syntax-string">"Python"</span>, <span class="syntax-string">"FastAPI"</span>, <span class="syntax-string">"Kafka"</span>, <span class="syntax-string">"Redis"</span><span class="syntax-bracket">]</span></div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-variable">focus</span> <span class="syntax-operator">=</span> <span class="syntax-string">"APIs, automation, and scalable backend systems"</span></div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-variable">passion</span> <span class="syntax-operator">=</span> <span class="syntax-string">"Building high-throughput systems"</span></div>
+        <div class="loader-line">&nbsp;</div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-keyword">def</span> <span class="syntax-func">handshake</span><span class="syntax-bracket">(</span><span class="syntax-variable">self</span><span class="syntax-bracket">)</span><span class="syntax-operator">:</span></div>
+        <div class="loader-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="syntax-keyword">return</span> <span class="syntax-string">"ready"</span></div>
+        <div class="loader-line">&nbsp;</div>
+        <div class="loader-line"><span class="syntax-variable">portfolio</span> <span class="syntax-operator">=</span> <span class="syntax-class">YashSharma</span><span class="syntax-bracket">()</span></div>
+        <div class="loader-line"><span class="syntax-variable">portfolio</span><span class="syntax-operator">.</span><span class="syntax-func">handshake</span><span class="syntax-bracket">()</span></div>
+        <div class="loader-line">&nbsp;</div>
+        <div class="loader-line"><span class="syntax-comment"># Establishing secure channel...</span></div>
+        <div class="loader-line loader-success"><span class="syntax-success">&gt;&gt;&gt; Portfolio ready. Welcome.</span></div>
+      </div>
+    </div>
+    <div class="loader-progress"></div>
+  </div>
+
+  <div id="site-content" class="site-content">
   <div class="noise-overlay"></div>
 
   <header class="site-header">
@@ -230,6 +262,7 @@
     </div>
   </footer>
 
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
