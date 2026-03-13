@@ -99,12 +99,11 @@
     </div>
   </header>
 
-  <main id="main-content">
-  <section class="hero-section">
+  <main id="main-content" class="projects-page">
+  <section class="hero-section hero-section--compact">
     <div class="hero-content">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-label">Portfolio</span>
-        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">All Projects</h1>
+        <h1 class="section-title section-title--hero">All Projects</h1>
         <p class="section-description">
           Curated case studies first, followed by supporting projects. Each card highlights the problem, approach,
           and outcome.
@@ -113,14 +112,14 @@
     </div>
   </section>
 
-  <section class="section section-padding">
+  <section class="section section-padding projects-section projects-section--featured">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-label">Featured</span>
         <h2 class="section-title">Case Studies</h2>
         <p class="section-description">High-signal projects with clear problem, solution, and impact framing.</p>
       </div>
-      <div class="projects-grid">
+      <div class="projects-grid projects-grid--balanced">
         <div class="project-card tilt-card" data-animate="fade-up" data-delay="0">
           <div class="project-card-image">
             <img src="assets/projects/deadcode/1.jpg" alt="PyDeadCode report overview screenshot">
@@ -180,12 +179,22 @@
         </div>
       </div>
 
-      <div class="section-header" data-animate="fade-up" style="margin-top:3rem;">
-        <span class="section-label">More Projects</span>
+      <div class="projects-cta" data-animate="fade-up">
+        <a href="#additional-work" class="btn btn-secondary">View More Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <section id="additional-work" class="section section-padding projects-section projects-section--secondary">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-label">Additional</span>
         <h2 class="section-title">Additional Work</h2>
         <p class="section-description">Supporting projects and frontend experiments.</p>
       </div>
-      <div class="projects-grid">
+      <div class="projects-grid projects-grid--balanced">
         <div class="project-card tilt-card" data-animate="fade-up" data-delay="0">
           <div class="project-card-image">
             <img src="assets/projects/url/1.jpg" alt="URL Shortener screenshot">
