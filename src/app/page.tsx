@@ -23,6 +23,7 @@ export default function HomePage() {
 
   return (
     <>
+      <Navbar />
       <ScrollIndicator />
       <div
         id="scroll-container"
@@ -40,7 +41,6 @@ export default function HomePage() {
             backfaceVisibility: 'hidden'
           }}
         >
-          <Navbar />
           <main>
             <Hero />
             <About />

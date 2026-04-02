@@ -108,15 +108,6 @@ export function Navbar() {
               <span className="absolute bottom-1 left-4 h-0.5 w-0 bg-gradient-to-r from-signal-500 to-cyan-400 transition-all duration-300 group-hover:w-[calc(100%-2rem)]" />
             </motion.a>
           ))}
-          <motion.a
-            href="#contact"
-            onClick={(event) => handleNavClick(event, '#contact')}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.98 }}
-            className="ml-3 rounded-lg bg-gradient-to-r from-signal-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-graphite-975 shadow-[0_10px_24px_rgba(96,165,250,0.35)]"
-          >
-            Get In Touch
-          </motion.a>
         </div>
 
         <button
@@ -146,13 +137,6 @@ export function Navbar() {
               {item.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={(event) => handleNavClick(event, '#contact')}
-            className="mt-2 block rounded-lg bg-gradient-to-r from-signal-500 to-cyan-400 px-4 py-3 text-center text-sm font-semibold text-graphite-975"
-          >
-            Get In Touch
-          </a>
         </div>
       </motion.div>
     </motion.nav>
