@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="160px" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#00d0ff" flood-opacity="0.9"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0088cc"/>
+      <stop offset="50%" stop-color="#00aaff"/>
+      <stop offset="100%" stop-color="#66e0ff"/>
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#glow)">
+    <path d="M60 20
+             C45 45, 40 70, 55 90
+             C50 110, 70 115, 65 130
+             C70 145, 50 150, 60 160
+             C70 150, 90 145, 85 130
+             C80 115, 100 110, 95 90
+             C110 70, 105 45, 90 20
+             C80 10, 70 5, 60 20
+             Z" fill="url(#flameGrad)" opacity="0.95"/>
+
+    <path d="M60 35
+             C50 55, 48 75, 58 90
+             C55 105, 70 108, 67 120
+             C70 130, 55 135, 60 145
+             C65 135, 80 130, 77 120
+             C74 108, 89 105, 86 90
+             C96 75, 94 55, 84 35
+             C75 25, 65 28, 60 35
+             Z" fill="#00eeff" opacity="0.7"/>
+
+    <path d="M60 50
+             C55 65, 54 80, 60 92
+             C58 100, 66 102, 65 110
+             C66 118, 58 120, 60 130
+             C62 120, 70 118, 69 110
+             C68 102, 76 100, 74 92
+             C80 80, 79 65, 74 50
+             C69 45, 64 46, 60 50
+             Z" fill="#ccffff" opacity="0.8"/>
+  </g>
+</svg>

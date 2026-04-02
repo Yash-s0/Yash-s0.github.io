@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-spacegrotesk: 'Space Grotesk';
+  --font-ibmplex: 'IBM Plex Sans';
+  --graphite-bg: #0b0f17;
+  --graphite-surface: #0f172a;
+  --graphite-elevated: #111827;
+  --signal: #60a5fa;
+  --cyan: #22d3ee;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --border-soft: rgba(148, 163, 184, 0.18);
+  --page-progress: 0;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+body {
+  @apply bg-graphite-950 font-sans text-text-primary antialiased;
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(96, 165, 250, 0.2), transparent 48%),
+    radial-gradient(circle at 82% 15%, rgba(34, 211, 238, 0.16), transparent 42%),
+    radial-gradient(circle at 52% 82%, rgba(96, 165, 250, 0.1), transparent 54%);
+  background-attachment: fixed;
+  background-position:
+    calc(50% + (var(--page-progress) * 4%))
+    calc(50% + (var(--page-progress) * -5%));
+}
+
+html.scroll-locked,
+html.scroll-locked body {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#scroll-container {
+  -ms-overflow-style: none;
+  overscroll-behavior: none;
+  scrollbar-width: none;
+}
+
+#scroll-container::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+::selection {
+  background: rgba(96, 165, 250, 0.35);
+  color: #0b0f17;
+}
+
+.glass-panel {
+  @apply rounded-2xl border border-white/10 bg-graphite-900/75 shadow-soft backdrop-blur-xl;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-signal-500 to-cyan-400 px-6 py-3 font-semibold text-graphite-975 shadow-[0_14px_34px_rgba(96,165,250,0.35)];
+  transition: transform 220ms var(--ease-out);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-lg border border-white/15 bg-graphite-900/75 px-6 py-3 font-semibold text-white;
+  transition: border-color 220ms var(--ease-out), color 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(96, 165, 250, 0.7);
+  color: #bfdbfe;
+  transform: translateY(-2px);
+}
+
+.pill {
+  @apply inline-flex items-center rounded-lg border border-white/10 bg-graphite-900/65 px-3 py-1 text-xs text-text-secondary;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip-bubble {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #e5e7eb;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  padding: 6px 10px;
+  pointer-events: none;
+  text-transform: uppercase;
+  transition: opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+  z-index: 6;
+}
+
+.tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 6px 6px 0;
+  border-color: rgba(15, 23, 42, 0.95) transparent transparent;
+}
+
+.tooltip:hover .tooltip-bubble {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.section-shell {
+  @apply relative flex min-h-screen items-center;
+}
+
+.section-pin {
+  @apply sticky top-0 flex h-screen items-center;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .section-shell {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .section-pin {
+    position: relative;
+    height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,27 @@
+<!-- QuestDB — neon single-color, soft-fill, chip-ready (22x22) -->
+<svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <defs>
+    <!-- subtle inner glow that plays well with your CSS drop-shadow -->
+    <linearGradient id="qFill" x1="0" x2="1">
+      <stop offset="0" stop-color="#00eaff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#00eaff" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+
+  <!-- soft rounded ring (Q body) -->
+  <path d="M12 3.25
+           A8.75 8.75 0 1 0 20.75 12
+           A8.75 8.75 0 0 0 12 3.25Z"
+        fill="url(#qFill)" />
+  <!-- gap segment to mimic the logo cut -->
+  <path d="M19.35 6.0
+           A8.6 8.6 0 0 1 21.0 12
+           A8.6 8.6 0 0 1 14.8 19.2"
+        fill="none" stroke="#00eaff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>
+
+  <!-- diagonal tail/arrow shape for the Q -->
+  <path d="M13.6 12.2 L19.2 6.4 L14.9 6.4 L12.6 8.9
+           L12.6 10.2 L13.6 12.2 Z"
+        fill="url(#qFill)" stroke="#00eaff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+
+</svg>
