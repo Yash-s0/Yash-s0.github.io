@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { useSmoothScrollContext } from '../smooth-scroll-provider';
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
@@ -13,6 +12,33 @@ const navItems = [
   { name: 'Impact', href: '#services' },
   { name: 'Contact', href: '#contact' }
 ];
+
+const activeIndicatorTransition = {
+  type: 'spring',
+  stiffness: 420,
+  damping: 36,
+  mass: 0.68
+} as const;
+
+function resolveActiveHref(scrollY: number) {
+  const marker = scrollY + window.innerHeight * 0.32;
+  let nextActiveHref = navItems[0]?.href ?? '';
+
+  for (const item of navItems) {
+    const section = document.getElementById(item.href.slice(1));
+    if (!section) continue;
+
+    const rect = section.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    if (marker >= sectionTop - 20) {
+      nextActiveHref = item.href;
+      continue;
+    }
+    break;
+  }
+
+  return nextActiveHref;
+}
 
 function BrandGlyph() {
   return (
@@ -45,16 +71,24 @@ function MenuIcon({ open }: { open: boolean }) {
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState(navItems[0]?.href ?? '');
   const { scrollTo } = useSmoothScrollContext();
 
   useEffect(() => {
     const scrollContainer = document.getElementById('scroll-container');
+    if (!scrollContainer) return;
+
     let rafId = 0;
 
     const sync = () => {
-      const scrollData = scrollContainer?.getAttribute('data-scroll');
+      const scrollData = scrollContainer.getAttribute('data-scroll');
       const scrollY = scrollData ? Number.parseFloat(scrollData) : 0;
-      setIsScrolled(scrollY > 48);
+      const nextIsScrolled = scrollY > 48;
+      const nextActiveHref = resolveActiveHref(scrollY);
+
+      setIsScrolled((prev) => (prev === nextIsScrolled ? prev : nextIsScrolled));
+      setActiveHref((prev) => (prev === nextActiveHref ? prev : nextActiveHref));
+
       rafId = requestAnimationFrame(sync);
     };
 
@@ -64,6 +98,8 @@ export function Navbar() {
 
   const handleNavClick = (event: React.MouseEvent, href: string) => {
     event.preventDefault();
+    const hasNavTarget = navItems.some((item) => item.href === href);
+    setActiveHref(hasNavTarget ? href : navItems[0]?.href ?? '');
     scrollTo(href, { offset: -40 });
     setIsMobileMenuOpen(false);
   };
@@ -94,20 +130,36 @@ export function Navbar() {
         </motion.a>
 
         <div className="hidden items-center gap-1 lg:flex">
-          {navItems.map((item, index) => (
-            <motion.a
-              key={item.name}
-              href={item.href}
-              onClick={(event) => handleNavClick(event, item.href)}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.04 }}
-              className="group relative rounded-lg px-4 py-2 text-sm text-text-secondary transition-colors hover:text-white"
-            >
-              {item.name}
-              <span className="absolute bottom-1 left-4 h-0.5 w-0 bg-gradient-to-r from-signal-500 to-cyan-400 transition-all duration-300 group-hover:w-[calc(100%-2rem)]" />
-            </motion.a>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = activeHref === item.href;
+
+            return (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
+                aria-current={isActive ? 'page' : undefined}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.04 }}
+                className={`group relative rounded-lg px-4 py-2 text-sm transition-colors ${
+                  isActive ? 'text-white' : 'text-text-secondary hover:text-white'
+                }`}
+              >
+                {isActive ? (
+                  <motion.span
+                    layoutId="desktop-nav-active-pill"
+                    transition={activeIndicatorTransition}
+                    className="absolute inset-0 rounded-lg border border-white/15 bg-white/10"
+                  />
+                ) : null}
+                <span className="relative z-10">{item.name}</span>
+                {!isActive ? (
+                  <span className="absolute bottom-1 left-4 h-0.5 w-0 bg-gradient-to-r from-signal-500 to-cyan-400 transition-all duration-300 group-hover:w-[calc(100%-2rem)]" />
+                ) : null}
+              </motion.a>
+            );
+          })}
         </div>
 
         <button
@@ -127,16 +179,25 @@ export function Navbar() {
         className="overflow-hidden border-t border-white/10 bg-graphite-900/95 backdrop-blur-xl lg:hidden"
       >
         <div className="space-y-2 px-4 py-4">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(event) => handleNavClick(event, item.href)}
-              className="block rounded-lg px-4 py-3 text-sm text-text-secondary transition-all hover:bg-graphite-850 hover:text-white"
-            >
-              {item.name}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeHref === item.href;
+
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(event) => handleNavClick(event, item.href)}
+                aria-current={isActive ? 'page' : undefined}
+                className={`block rounded-lg border px-4 py-3 text-sm transition-all ${
+                  isActive
+                    ? 'border-white/20 bg-white/10 text-white'
+                    : 'border-transparent text-text-secondary hover:bg-graphite-850 hover:text-white'
+                }`}
+              >
+                {item.name}
+              </a>
+            );
+          })}
         </div>
       </motion.div>
     </motion.nav>
