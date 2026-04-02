@@ -7,6 +7,7 @@ import { SectionHeader } from './SectionHeader';
 
 export function Projects() {
   const reduceMotion = useReducedMotion();
+  const visibleAdditionalProjects = portfolio.additionalProjects.slice(0, 3);
 
   return (
     <section id="projects" className="relative overflow-hidden py-32">
@@ -93,7 +94,7 @@ export function Projects() {
           />
 
           <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-            {portfolio.additionalProjects.map((project, index) => (
+            {visibleAdditionalProjects.map((project, index) => (
               <motion.article
                 key={project.name}
                 initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}

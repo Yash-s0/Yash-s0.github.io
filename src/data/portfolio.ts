@@ -341,7 +341,7 @@ export const portfolio = {
   additionalProjects: [
     {
       name: 'Binance Listener Suite',
-      description: 'Kafka-backed listener suite with resilient retries and schema control.',
+      description: '',
       stack: ['Python', 'Kafka', 'PostgreSQL'],
       thumbnail: '/assets/assets/projects/binance/1.jpg',
       links: {
