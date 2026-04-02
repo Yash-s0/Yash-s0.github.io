@@ -31,10 +31,7 @@ export function About() {
             className="space-y-6"
           >
             <div className="rounded-2xl border border-white/10 bg-graphite-900/72 p-7">
-              <p className="text-lg leading-relaxed text-text-secondary">
-                {portfolio.hero.statement}
-              </p>
-              <p className="mt-5 text-base leading-relaxed text-text-secondary">
+              <p className="text-base leading-relaxed text-text-secondary">
                 {portfolio.aboutSteps[0]?.body}
               </p>
               <p className="mt-4 text-base leading-relaxed text-text-secondary">

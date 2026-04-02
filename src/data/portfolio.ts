@@ -3,7 +3,7 @@ export const portfolio = {
     name: 'Yash Sharma',
     role: 'Backend & Distributed Systems Engineer',
     statement:
-      'Backend & Web3 engineer focused on building low-latency APIs, event-driven systems, and scalable data infrastructure.',
+      'Backend & Distributed Systems engineer specializing in high-performance APIs, event-driven pipelines, and blockchain data infrastructure.',
     supporting:
       'I design and run production backend systems end-to-end, optimizing for performance, reliability, and scale.',
     location: 'New Delhi, India',
@@ -57,14 +57,14 @@ export const portfolio = {
   skillsScenes: [
     {
       label: 'Backend Engineering',
-      description: 'FastAPI services, Redis caching, and production-grade API patterns.',
+      description: 'Flask services, Redis caching, and production-grade API patterns.',
       summary: 'Latency-focused service design with async IO and robust auth.',
-      chips: ['FastAPI', 'Redis', 'PostgreSQL', 'JWT', 'Async IO'],
+      chips: ['Flask', 'Redis', 'PostgreSQL', 'JWT', 'Async IO'],
       systemNote: 'Auth + rate-limits tuned for consistent p95s.',
       metric: '120 ms p95 on core endpoints',
       visuals: [
         { icon: 'python', label: 'Python' },
-        { icon: 'fastapi', label: 'FastAPI' },
+        { icon: 'flask', label: 'Flask' },
         { icon: 'redis', label: 'Redis' },
         { icon: 'postgresql', label: 'PostgreSQL' },
         { icon: 'docker', label: 'Docker' }
@@ -93,7 +93,7 @@ export const portfolio = {
       systemNote: 'Instrumented pipelines with alerting and tracing.',
       metric: 'Reliability-first API design',
       visuals: [
-        { icon: 'fastapi', label: 'FastAPI' },
+        { icon: 'flask', label: 'Flask' },
         { icon: 'redis', label: 'Redis' },
         { icon: 'github', label: 'GitHub' },
         { icon: 'linux', label: 'Linux' },
@@ -134,102 +134,170 @@ export const portfolio = {
   techStack: [
     {
       category: 'Backend',
-      items: ['Python', 'FastAPI', 'Flask', 'REST APIs', 'WebSockets', 'Async IO']
+      items: [
+        'Python',
+        'FastAPI',
+        'Flask',
+        'REST APIs',
+        'WebSockets',
+        'Async IO',
+        'Microservices',
+        'API Design',
+        'JWT Auth',
+        'Pagination',
+        'Caching Strategies'
+      ]
     },
     {
       category: 'Databases',
-      items: ['PostgreSQL', 'Redis', 'MongoDB', 'MySQL', 'SQLite', 'TimescaleDB', 'QuestDB']
+      items: [
+        'PostgreSQL',
+        'TimescaleDB',
+        'QuestDB',
+        'MongoDB',
+        'MySQL',
+        'SQLite',
+        'Elasticsearch',
+      ]
     },
     {
       category: 'Streaming / Data',
-      items: ['Kafka', 'ETL Pipelines', 'Data Modeling', 'Partitioning']
+      items: [
+        'Kafka',
+        'Redis',
+        'ETL Pipelines',
+        'Web3 Data Pipelines',
+        'Streaming Pipelines',
+        'Data Modeling',
+        'Partitioning',
+        'Indexing',
+        'Query Optimization',
+        'Time-Series Databases'
+      ]
     },
     {
       category: 'Web3',
-      items: ['Web3.py', 'Ethereum', 'BSC', 'Base', 'Smart Contract Events', 'JSON-RPC']
+      items: [
+        'Web3',
+        'Ethereum',
+        'BSC',
+        'Base',
+        'Multi-chain Listeners',
+        'Smart Contract Event Decoding',
+        'JSON-RPC',
+        'DEX APIs',
+        'On-chain Indexing',
+        'Chainlink Oracles'
+      ]
     },
     {
       category: 'DevOps',
-      items: ['Docker', 'Docker Compose', 'Linux', 'AWS S3', 'Prometheus', 'Git', 'GitHub']
+      items: [
+        'Docker Compose',
+        'Linux',
+        'AWS S3',
+        'Prometheus',
+        'PM2',
+      ]
+    },
+    {
+      category: 'Tooling / Ops',
+      items: [
+        'DBeaver', 
+        'Production Debugging', 
+        'Telegram Bot',
+        'Firebase',
+      ]
     }
   ],
-  experienceScenes: [
-    {
+  experience: {
+    company: {
+      name: 'Stackera',
       role: 'Software Engineer I',
-      company: 'Stackera',
       period: 'Jul 2023 — Present',
-      focus: 'Backend and Web3 engineering across multiple products.',
-      impact: 'End-to-end ownership of low-latency APIs, streaming pipelines, and observability.',
-      stack: ['FastAPI', 'Kafka', 'PostgreSQL', 'Redis', 'Prometheus', 'Web3.py'],
-      systems: ['CRM Platform', 'Crypto Betting Platform', 'DexCheck.io'],
-      outcomes: ['50% listener latency reduction', '120 ms p95 APIs', 'Kafka ETL + partitioned analytics'],
-      achievements: [
-        'Architected backend services spanning Web3 analytics and internal platforms.',
-        'Implemented caching + tracing for production-grade latency budgets.',
-        'Built ingestion pipelines with replay safety and backfill reliability.'
+      summary:
+        'Worked across multiple client and internal systems spanning Web3 analytics, financial systems, and operational platforms.',
+      focus:
+        'Backend and Web3 engineering across multiple client products with end-to-end ownership of architecture, implementation, monitoring, and performance optimization.',
+      stack: ['Flask', 'FastAPI', 'Kafka', 'PostgreSQL', 'Redis', 'Prometheus', 'Web3.py'],
+      projects: [
+        {
+          name: 'CRM Platform',
+          period: 'Jan 2026 — Present',
+          labels: ['Client Project', 'Internal Platform'],
+          description:
+            'Built backend services and internal operational tooling for staff management, lead tracking, performance monitoring, and Telegram-to-web real-time chat workflows.',
+          systems: [
+            'Staff management',
+            'Lead tracking',
+            'Performance monitoring',
+            'Telegram bot inbox integration',
+            'Bi-directional web and Telegram chat sync'
+          ],
+          outcomes: [
+            'Manager-agent coordination',
+            'Operational visibility',
+            'Automatic client creation from Telegram messages'
+          ],
+          achievements: [
+            'Built backend services and internal tools for staff management, lead tracking, performance monitoring, and real-time chat workflows.',
+            'Implemented Telegram bot integration that creates client profiles in the web CRM when users message the bot, including synced name and image metadata.',
+            'Built bi-directional messaging sync so inbound Telegram messages appear in the web chat panel and outbound web replies are delivered back to users on Telegram.',
+            'Implemented Firebase-based notification systems for manager-agent coordination and operational visibility.'
+          ],
+          stack: ['FastAPI', 'PostgreSQL', 'Firebase', 'Telegram Bot', 'Amazon S3']
+        },
+        {
+          name: 'Crypto Betting Platform',
+          period: 'Nov 2025 — Present',
+          labels: ['Client Project'],
+          description:
+            'Designed financial backend services for users, sessions, bets, payouts, and provably fair game mechanisms.',
+          systems: ['Users', 'Sessions', 'Bets', 'Payouts', 'Provably fair game mechanisms'],
+          outcomes: ['Idempotent betting and payout workflows', 'Strong consistency under concurrency'],
+          achievements: [
+            'Designed FastAPI and PostgreSQL backend services for users, sessions, bets, payouts, and provably fair game mechanisms.',
+            'Implemented transaction-safe betting and payout flows with idempotency, concurrency control, and strong consistency under concurrent load.',
+            'Optimized critical execution paths for low-latency payout handling with reliable session integrity.'
+          ],
+          stack: ['FastAPI', 'PostgreSQL', 'Async IO']
+        },
+        {
+          name: 'DexCheck.io — Web3 Analytics',
+          period: 'Jul 2023 — Oct 2025',
+          labels: ['Client Project'],
+          description:
+            'Built multi-chain indexing and analytics systems with low-latency APIs and replay-safe blockchain data pipelines.',
+          systems: ['Multi-chain listeners', 'On-chain indexing', 'Kafka ETL pipelines', 'Analytics APIs'],
+          outcomes: ['50% listener latency reduction', '120 ms p95 API latency', 'Replay-safe backfills'],
+          achievements: [
+            'Built multi-chain listeners across Ethereum, BSC, and Base using Web3.py, smart contract event decoding, and JSON-RPC integrations.',
+            'Reduced listener latency by 50% through batching, RPC tuning, and event-driven pipeline optimization.',
+            'Developed high-performance FastAPI APIs with Redis caching and Prometheus instrumentation, achieving 120 ms p95 latency.',
+            'Built fault-tolerant Kafka-based ETL pipelines feeding partitioned PostgreSQL analytics databases, improving replay safety and backfill reliability.'
+          ],
+          stack: [
+            'Python', 'Flask', 'Async IO', 'WebSocket', 'Microservices', 'Redis', 'PostgreSQL', 'Query Optimization',
+            'TimescaleDB', 'QuestDB', 'MongoDB', 'Elasticsearch', 'Time-Series Databases', 'Kafka (Docker-based)',
+            'Web3 Data Pipelines', 'Web3', 'Prometheus', 'Docker Compose', 'Amazon S3', 'DBeaver'
+          ]
+        }
       ]
     },
-    {
-      role: 'CRM Platform',
-      company: 'Stackera',
-      period: 'Jan 2026 — Present',
-      focus: 'Internal tools for staff management, lead tracking, and real-time coordination.',
-      impact: 'Operational visibility and team workflows across chat + notifications.',
-      stack: ['FastAPI', 'PostgreSQL', 'Firebase', 'Redis'],
-      systems: ['Staff management', 'Lead tracking', 'Real-time chat'],
-      outcomes: ['Real-time chat workflows', 'Manager-agent coordination', 'Live notifications'],
-      achievements: [
-        'Built backend services for staff performance monitoring and lead tracking.',
-        'Implemented Firebase notification systems for operational visibility.',
-        'Shipped internal tooling with role-based access and audit-ready logging.'
-      ]
-    },
-    {
-      role: 'Crypto Betting Platform',
-      company: 'Stackera',
-      period: 'Nov 2025 — Present',
-      focus: 'Transaction-safe betting workflows and provably fair games.',
-      impact: 'Concurrency-safe bets, payouts, and session handling.',
-      stack: ['FastAPI', 'PostgreSQL', 'Redis', 'Async IO'],
-      systems: ['Sessions', 'Bets & payouts', 'Provably fair games'],
-      outcomes: ['Idempotent payouts', 'Strong consistency under load', 'Secure session workflows'],
-      achievements: [
-        'Designed users, sessions, bets, and payout services in FastAPI.',
-        'Implemented transaction-safe betting with idempotency guarantees.',
-        'Optimized concurrency paths to ensure consistency under high load.'
-      ]
-    },
-    {
-      role: 'DexCheck.io — Web3 Analytics',
-      company: 'Stackera',
-      period: 'Jul 2023 — Oct 2025',
-      focus: 'Multi-chain indexing, ETL pipelines, and low-latency APIs.',
-      impact: 'Real-time analytics from Ethereum, BSC, and Base.',
-      stack: ['Web3.py', 'Kafka', 'PostgreSQL', 'Redis', 'Prometheus'],
-      systems: ['Multi-chain listeners', 'ETL pipelines', 'Analytics APIs'],
-      outcomes: ['50% listener latency reduction', '120 ms p95 API latency', 'Replay-safe ETL'],
-      achievements: [
-        'Built multi-chain listeners with RPC tuning, batching, and event decoding.',
-        'Developed FastAPI endpoints with Redis caching + Prometheus instrumentation.',
-        'Delivered Kafka-based ETL feeding partitioned analytics databases.'
-      ]
-    },
-    {
+    internship: {
       role: 'Software Development Intern',
-      company: 'Stackera',
       period: 'Apr 2023 — Jun 2023',
-      focus: 'Backend services for early DeFi workflows.',
-      impact: 'Performance wins through endpoint and query optimization.',
-      stack: ['Python', 'Flask', 'PostgreSQL'],
+      label: 'Same Company Progression',
+      summary: 'Python and Flask backend development for early DeFi workflows.',
       systems: ['Authentication', 'Persistence', 'Analytics dashboards'],
-      outcomes: ['20% faster prototype processing', 'Early DeFi backend features'],
+      outcomes: ['20% faster prototype processing', 'Early DeFi backend feature delivery'],
       achievements: [
-        'Improved prototype processing time by 20% via query optimization.',
-        'Built authentication, persistence, and analytics endpoints.',
-        'Supported early DeFi workflows with reliable backend services.'
-      ]
+        'Developed Python and Flask backend services and improved prototype processing time by 20% through endpoint and query optimization.',
+        'Implemented backend features for early DeFi workflows, including authentication, persistence, and analytics dashboards.'
+      ],
+      stack: ['Python', 'Flask', 'PostgreSQL']
     }
-  ],
+  },
   featuredProjects: [
     {
       slug: 'deadcode',
